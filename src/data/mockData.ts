@@ -165,7 +165,7 @@ export const uspData = {
     "Das IOD sitzt so nah am Arm, dass du vergisst, dass du ueberhaupt Schutz traegst. Keine Polster, kein Klotz -- ein hauchduenner Sleeve mit integriertem Ellbogenpad und deinem Design drauf. Fuer alle ab Kids- bis Erwachsenengroesse.",
   points: [
     {
-      icon: "fitbit",
+      icon: "fingerprint",
       title: "Second-Skin Passform",
       description: "4-Way Stretch, bewegt sich mit dir -- kein Einschneiden, kein Verrutschen.",
     },
