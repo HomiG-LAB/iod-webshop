@@ -32,8 +32,8 @@ export default function Home() {
     <>
       {/* ─── 1. TOP NAV ─────────────────────────────────────────────────── */}
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-3 mx-auto mt-5 w-[95%] max-w-7xl rounded-full bg-[#0a0b0d]/85 backdrop-blur-xl border border-white/[0.06] shadow-[0_0_40px_rgba(0,0,0,0.6)]">
-        <a href="#hero" id="iod-logo" className="text-3xl font-black italic tracking-tighter text-[#c8f400] text-glow-lime font-headline select-none">
-          IOD
+        <a href="#hero" id="iod-logo" className="block select-none">
+          <img src="/logo-iod.png" alt="IOD Logo" className="h-20 w-auto object-contain" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8" aria-label="Hauptnavigation">
@@ -394,7 +394,9 @@ export default function Home() {
       <footer className="w-full px-6 sm:px-10 py-12 bg-[#0d0f11] border-t border-white/[0.05] rounded-t-[3rem] mt-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start gap-1">
-            <div className="text-2xl font-black italic tracking-tighter text-[#c8f400] text-glow-lime font-headline">IOD</div>
+            <div className="mb-2">
+              <img src="/logo-iod.png" alt="IOD Logo" className="h-16 w-auto object-contain" />
+            </div>
             <p className="font-headline text-xs font-medium tracking-tight text-[#3e4c58]">
               © 2024 Inside Out Design — 100% Textile. 0% Plastik.
             </p>
