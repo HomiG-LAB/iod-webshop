@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // ── 1. Add contact to Brevo list ───────────────────────────────────────
+    // ── 1. Add contact to Brevo (updateEnabled: false = fail if exists) ────
     const contactResponse = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
@@ -32,24 +32,38 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         email,
-        updateEnabled: true,
+        updateEnabled: false,
         attributes: {
           SOURCE: 'IOD Pre-Launch Signup',
         },
       }),
     });
 
-    // If status is 204 No Content (meaning contact was updated), there is no JSON body
-    let contactData = null;
-    if (contactResponse.status !== 204) {
-      try {
-        contactData = await contactResponse.json();
-      } catch (e) {
-        // ignore parse error if body is empty or invalid
-      }
+    let contactData: { code?: string; message?: string } | null = null;
+
+    // 204 = contact updated (shouldn't happen with updateEnabled:false, but guard anyway)
+    if (contactResponse.status === 204) {
+      return NextResponse.json(
+        { message: 'Du bist bereits in der Liste! Wir melden uns beim Launch. 🤙', alreadySubscribed: true },
+        { status: 200 }
+      );
     }
 
+    // Try to parse the JSON body for all other responses
+    try {
+      contactData = await contactResponse.json();
+    } catch {
+      // ignore empty body
+    }
+
+    // Brevo returns 400 + code "duplicate_parameter" if email already exists
     if (!contactResponse.ok) {
+      if (contactData?.code === 'duplicate_parameter') {
+        return NextResponse.json(
+          { message: 'Du bist bereits in der Liste! Wir melden uns beim Launch. 🤙', alreadySubscribed: true },
+          { status: 200 }
+        );
+      }
       console.error('Brevo Contact API Error:', contactData);
       return NextResponse.json(
         { error: contactData?.message || 'Fehler beim Eintragen in den Newsletter.' },
@@ -57,7 +71,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // ── 2. Send welcome email via Brevo transactional API ─────────────────
+    // ── 2. Send welcome email only for NEW contacts ────────────────────────
     const htmlContent = buildWelcomeEmail(email);
 
     const emailResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
@@ -81,8 +95,8 @@ export async function POST(request: Request) {
 
     if (!emailResponse.ok) {
       const emailError = await emailResponse.json();
-      // Don't block the user – contact was saved. Log the email failure.
       console.error('Brevo Welcome Email Error:', emailError);
+      // Don't block user – contact was saved successfully
     }
 
     return NextResponse.json(
