@@ -17,6 +17,7 @@ import {
 import { client } from "../sanity/client";
 import { urlFor } from "../sanity/image";
 import TeamCarousel from "../components/TeamCarousel";
+import NewsletterForm from "../components/NewsletterForm";
 // -----------------------------------------------------------------------------
 // IOD Webshop Homepage — Skin: "Kinetic Asphalt"
 export const revalidate = 0; // Disable caching so Sanity updates are immediately visible
@@ -398,18 +399,7 @@ export default async function Home() {
               </h2>
               <p className="text-[#384900] font-medium text-base">{newsletter.description}</p>
             </div>
-            <div className="relative z-10 flex w-full md:w-auto gap-2">
-              <input
-                id="newsletter-input"
-                type="email"
-                placeholder={newsletter.placeholder}
-                className="bg-[#1a2000]/15 border-none rounded-full px-6 py-3 w-full md:w-72 placeholder:text-[#1a2000]/50 text-[#1a2000] font-medium focus:outline-none focus:ring-2 focus:ring-[#1a2000]/40"
-                aria-label="E-Mail Adresse"
-              />
-              <button id="newsletter-submit" className="btn-kinetic-primary !bg-[#1a2000] !text-[#c8f400] px-8 py-3 text-sm whitespace-nowrap">
-                {newsletter.buttonText}
-              </button>
-            </div>
+            <NewsletterForm newsletter={newsletter} />
           </div>
         </section>
       </main>

@@ -112,7 +112,7 @@ async function seedHomePage() {
       titlePart4: "STATEMENT.",
       subTagline:
         "Der Ellbogenschützer, der sich anfühlt wie nichts — und trotzdem alles sagt. Hauchdünn, elastisch, komplett bedruckbar. Für alle, die auf dem Pumptrack ihre eigene Linie fahren.",
-      cta1: "JETZT BESTELLEN",
+      cta1: "BALD VERFÜGBAR",
       cta2: "MEHR ERFAHREN",
       ...(heroImage && { backgroundImage: heroImage }),
     },
@@ -282,11 +282,11 @@ async function seedHomePage() {
 
     // ── Newsletter Section
     newsletter: {
-      title: "JOIN THE CREW",
+      title: "SEI DABEI WENN'S LOSGEHT.",
       description:
-        "Exklusiver Zugang zu Drops, Pro-Tipps vom Track und einer Community aus Rebellen.",
+        "Wir bauen gerade was Neues. Trag dich ein und erfahre als Erster, wenn die Sleeves droppen — plus exklusive Pre-Launch Deals, die nur die Crew kriegt.",
       placeholder: "deine@rebel-mail.de",
-      buttonText: "REINGEHEN",
+      buttonText: "ICH BIN DABEI",
     },
   };
 
@@ -427,6 +427,7 @@ async function seedProducts() {
       badge: p.badge,
       badgeType: p.badgeType,
       description: p.description,
+      comingSoon: true,
       ...(image && { image }),
     };
 

@@ -55,6 +55,13 @@ export const productType = defineType({
       },
       initialValue: 'primary',
     }),
+    defineField({
+      name: 'comingSoon',
+      title: 'Coming Soon',
+      type: 'boolean',
+      description: 'Wenn aktiv, wird das Produkt als "Coming Soon" angezeigt und kann nicht bestellt werden.',
+      initialValue: true,
+    }),
   ],
   preview: {
     select: {

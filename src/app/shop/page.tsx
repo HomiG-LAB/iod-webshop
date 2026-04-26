@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { productsData, collabData, showcaseData, sizesData } from "../../data/mockData";
-import { useCart, CartItem } from "../../context/CartContext";
+import { productsData, collabData, sizesData } from "../../data/mockData";
 import { client } from "../../sanity/client";
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
@@ -97,7 +96,6 @@ function ProductCard({ product }: { product: Product }) {
 export default function Shop() {
   const [sanityProducts, setSanityProducts] = useState(allProducts);
   const [filter, setFilter] = useState("ALL");
-  const { addItem, openDrawer } = useCart();
 
   useEffect(() => {
     client.fetch(`*[_type == "product"]{
@@ -133,10 +131,7 @@ export default function Shop() {
         return false;
       });
 
-  const handleAddToCart = (item: CartItem) => {
-    addItem(item);
-    openDrawer();
-  };
+
 
   return (
     <div className="min-h-screen bg-[#0a0b0d] text-[#e8ecef] selection:bg-[#c8f400] selection:text-[#1a2000]">
@@ -148,8 +143,12 @@ export default function Shop() {
               THE <span className="text-[#c8f400] glow-lime">STORE.</span>
             </h1>
             <p className="text-[#8d9ba8] text-base max-w-lg">
-              Entdecke alle Designs unserer Second-Skin Sleeves. Hauchdünn, elastisch, komplett bedruckbar.
+              Unsere Second-Skin Sleeves sind bald verfügbar. Entdecke schon jetzt alle Designs — hauchdünn, elastisch, komplett bedruckbar.
             </p>
+            <div className="inline-flex items-center gap-2 mt-3 bg-[#ff56ed]/10 border border-[#ff56ed]/25 text-[#ff56ed] px-4 py-2 rounded-full text-xs font-headline font-black uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#ff56ed] animate-pulse" />
+              PRE-LAUNCH — COMING SOON
+            </div>
           </div>
         </div>
 
@@ -193,12 +192,11 @@ export default function Shop() {
 
           {/* Product Grid */}
           <div className="flex-1">
-            {/* Size Reminder Banner */}
-            <div className="flex items-start gap-3 bg-[#00c8f0]/5 border border-[#00c8f0]/20 rounded-xl px-4 py-3 mb-6">
-              <span className="material-symbols-outlined text-[#00c8f0] text-lg mt-0.5">info</span>
+            {/* Pre-Launch Banner */}
+            <div className="flex items-start gap-3 bg-[#c8f400]/5 border border-[#c8f400]/20 rounded-xl px-4 py-3 mb-6">
+              <span className="material-symbols-outlined text-[#c8f400] text-lg mt-0.5">rocket_launch</span>
               <p className="text-[#8d9ba8] text-xs leading-relaxed">
-                <span className="text-[#00c8f0] font-headline font-black">Bitte Grösse wählen</span> bevor du in den Warenkorb legst.{" "}
-                <a href="/#sizes" className="underline hover:text-[#c8f400] transition-colors">Grössenguide ansehen →</a>
+                <span className="text-[#c8f400] font-headline font-black">Wir starten bald!</span> Alle Designs sind in Vorbereitung. Trag dich unten in den Newsletter ein, um als Erster zu erfahren, wenn es losgeht.
               </p>
             </div>
 
@@ -207,7 +205,6 @@ export default function Shop() {
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onAddToCart={handleAddToCart}
                 />
               ))}
             </div>
