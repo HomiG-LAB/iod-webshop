@@ -131,21 +131,21 @@ export const lookbookData = {
   shots: [
     {
       id: 1,
-      image: "/lookbook_pumptrack_v2_1777206340949.png",
-      caption: "Asphalt & Lime",
-      tag: "PUMPTRACK",
+      image: "/product_monster_track.png",
+      caption: "Urban Camo Edition",
+      tag: "LATEST",
     },
     {
       id: 2,
-      image: "/lookbook_style_1777205737529.png",
-      caption: "Cyber Splat im Flow",
-      tag: "STYLE",
+      image: "/product_goat_mask.png",
+      caption: "SUI-VIBE Original",
+      tag: "CLASSIC",
     },
     {
       id: 3,
-      image: "/lookbook_action_v2_1777206355478.png",
-      caption: "Neon im Staub",
-      tag: "ACTION",
+      image: "/product_pro_street.png",
+      caption: "Night Rider Sleeve",
+      tag: "LIMITED",
     },
   ],
 };
@@ -289,8 +289,7 @@ export const productsData = [
     price: "39.00 CHF",
     badge: "TRENDING",
     badgeType: "primary",
-    image:
-      "/product_monster_track.png",
+    image: "/product_monster_track.png",
     alt: "Monster Track Edition Sleeve",
   },
   {
@@ -299,8 +298,7 @@ export const productsData = [
     price: "39.00 CHF",
     badge: "5 LEFT",
     badgeType: "tertiary",
-    image:
-      "/product_pro_street.png",
+    image: "/product_pro_street.png",
     alt: "CR7 Street Edition",
   },
   {
@@ -309,8 +307,7 @@ export const productsData = [
     price: "39.00 CHF",
     badge: "HOT",
     badgeType: "secondary",
-    image:
-      "/product_goat_mask.png",
+    image: "/product_goat_mask.png",
     alt: "GOAT Mask Edition",
   },
   {
@@ -319,9 +316,53 @@ export const productsData = [
     price: "39.00 CHF",
     badge: null,
     badgeType: "primary",
-    image:
-      "/product_victory_lap.png",
+    image: "/product_victory_lap.png",
     alt: "Pumptrack Flow Sleeve",
+  },
+  {
+    id: 5,
+    name: "SUI-VIBE Original",
+    price: "39.00 CHF",
+    badge: "NEW DROP",
+    badgeType: "secondary",
+    image: "/product_goat_mask.png",
+    alt: "SUI-VIBE Original Edition",
+  },
+  {
+    id: 6,
+    name: "Neon Rush",
+    price: "39.00 CHF",
+    badge: null,
+    badgeType: "primary",
+    image: "/product_victory_lap.png",
+    alt: "Neon Rush Sleeve",
+  },
+  {
+    id: 7,
+    name: "Night Rider",
+    price: "39.00 CHF",
+    badge: "LIMITED",
+    badgeType: "tertiary",
+    image: "/product_pro_street.png",
+    alt: "Night Rider Edition",
+  },
+  {
+    id: 8,
+    name: "Urban Camo",
+    price: "39.00 CHF",
+    badge: "HOT",
+    badgeType: "primary",
+    image: "/product_monster_track.png",
+    alt: "Urban Camo Edition",
+  },
+  {
+    id: 9,
+    name: "Velocity Burst",
+    price: "39.00 CHF",
+    badge: "TRENDING",
+    badgeType: "secondary",
+    image: "/product_victory_lap.png",
+    alt: "Velocity Burst Sleeve",
   },
 ];
 
@@ -338,4 +379,75 @@ export const philosophyData = {
     "/founder_story_mockup_1777204011615.png",
   alt: "Kind mit IOD Sleeve am Pumptrack",
   badge: "TESTED BY REBELS",
+};
+
+export const teamData = {
+  eyebrow: "UNSER TEAM",
+  title: "DIE CREW\nHINTER IOD",
+  description: "Ein Startup. Eine Familie. Ein Ziel. Wir sind das Team, das IOD jeden Tag besser macht.",
+  members: [
+    {
+      id: "katja",
+      name: "Katja",
+      role: "Entrepreneurship Coach & Strategic Lead",
+      description: "Verbindet strategisches Denken mit praktischer Umsetzung und begleitet das Team dabei, Ideen in echte Projekte zu verwandeln. Im Mittelpunkt steht nicht nur das Projekt selbst, sondern auch das Lernen: Unternehmertum verstehen, ausprobieren und entwickeln.",
+      image: "/team/katja-styled.png"
+    },
+    {
+      id: "homero",
+      name: "Homero",
+      role: "Systems Architect aka “Tech Whisperer”",
+      description: "Als echter Techie und Halb-Nerd lebt diese Rolle irgendwo zwischen Code, Logik und dem festen Glauben, dass „man das noch eleganter lösen kann“. Wenn es technisch wird, ist er entweder schon dran oder hat es schon längst verbessert.",
+      image: "/team/homero-styled.png"
+    },
+    {
+      id: "amaro",
+      name: "Amaro",
+      role: "Experimentation & Development Lead",
+      description: "Bringt neue Ideen in die Praxis und testet sie strukturiert, kritisch und mit einem klaren Blick für Verbesserung. Hinterfragt Ansätze, entwickelt sie weiter und sorgt dafür, dass aus Konzepten funktionierende Lösungen werden. Als Chemie- und Sportenthusiast verbindet diese Rolle analytisches Denken aus dem Labor mit Ausdauer, Disziplin und Leistungsorientierung aus dem Sport.",
+      image: "/team/amaro-styled.png"
+    },
+    {
+      id: "ciara",
+      name: "Ciara",
+      role: "Content & Social Media Lead",
+      description: "Verantwortlich für die Erstellung von Content und die Pflege unserer Social-Media-Kanäle. Entwickelt kreative Inhalte, erzählt unsere Geschichte nach außen und sorgt dafür, dass unsere Marke online sichtbar, konsistent und nahbar bleibt.",
+      image: "/team/ciara-styled.png"
+    },
+    {
+      id: "jonah",
+      name: "Jonah",
+      role: "Sales & Growth Lead",
+      description: "Verantwortlich für den Aufbau von Kundenbeziehungen und die Weiterentwicklung unseres Vertriebs. Fokussiert auf Wachstum durch echte Verbindung: versteht Bedürfnisse, übersetzt sie in Lösungen und bringt Angebote gezielt an die richtigen Menschen.",
+      image: "/team/jonah-styled.png"
+    },
+    {
+      id: "amy",
+      name: "Amy",
+      role: "Lead Product Tester & Experience Manager",
+      description: "Testet alles, bevor es jemand anderes tut – kritisch, ehrlich und mit Blick fürs Detail. Sorgt dafür, dass unsere Produkte nicht nur funktionieren, sondern begeistern.",
+      image: "/team/amy-styled.png"
+    },
+    {
+      id: "liv",
+      name: "Liv",
+      role: "Brand Lead & Community Magic",
+      description: "Verantwortlich für die Aussenwirkung unserer Marke sowie den Aufbau und die Pflege unserer Community.",
+      image: "/team/liv-styled.png"
+    },
+    {
+      id: "amigo",
+      name: "Amigo",
+      role: "Chief Security Officer",
+      description: "Verantwortlich für Sicherheit, Alarmbereitschaft. Erkennt Gefahren frühzeitig und sorgt für regelmässige Bewegungspausen im Team.",
+      image: "/team/amigo-styled.png"
+    },
+    {
+      id: "mrs-curry",
+      name: "Mrs. Curry",
+      role: "Chief Mental Health Officer",
+      description: "Expertin für Entschleunigung und emotionale Balance. Erinnerte das Team daran, Pausen einzulegen, Prioritäten zu hinterfragen und das Leben nicht zu ernst zu nehmen.",
+      image: "/team/curry-styled.png"
+    }
+  ]
 };

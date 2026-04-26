@@ -22,7 +22,9 @@ export const metadata: Metadata = {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { CartProvider } from "@/context/CartContext";
+import { AuthProvider } from "@/context/AuthProvider";
 
 export default function RootLayout({
   children,
@@ -38,14 +40,17 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
-        <CartProvider>
-          <Header />
+        <AuthProvider>
+          <CartProvider>
+            <Header />
           <CartDrawer />
           <main className="flex-1 flex flex-col">
             {children}
           </main>
           <Footer />
+          <VisualEditing />
         </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -33,8 +33,41 @@ export const productType = defineType({
     }),
     defineField({
       name: 'price',
-      title: 'Price (EUR)',
+      title: 'Price (CHF)',
       type: 'number',
     }),
+    defineField({
+      name: 'badge',
+      title: 'Badge Text',
+      type: 'string',
+      description: 'e.g. HOT, NEW DROP, TRENDING',
+    }),
+    defineField({
+      name: 'badgeType',
+      title: 'Badge Color Type',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Primary (Neon)', value: 'primary'},
+          {title: 'Secondary (Blue/Purple)', value: 'secondary'},
+          {title: 'Tertiary (Red/Orange)', value: 'tertiary'},
+        ],
+      },
+      initialValue: 'primary',
+    }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'price',
+      media: 'image',
+    },
+    prepare(selection) {
+      return {
+        title: selection.title,
+        subtitle: `CHF ${selection.subtitle || 0}.00`,
+        media: selection.media
+      }
+    }
+  }
 })

@@ -1,36 +1,13 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { signIn, useSession } from "next-auth/react";
 
-// ─── SIMPLE LOCAL AUTH ────────────────────────────────────────────────────────
-// Phase 1: localStorage-based. Can be swapped for NextAuth with no UI changes.
-const USERS_KEY = "iod_users_v1";
-const SESSION_KEY = "iod_session_v1";
-
-type StoredUser = { email: string; name: string; passwordHash: string };
-
-function hashSimple(str: string): string {
-  // Simple deterministic hash for demo — NOT for production
-  let h = 0;
-  for (let i = 0; i < str.length; i++) h = (Math.imul(31, h) + str.charCodeAt(i)) | 0;
-  return h.toString(36);
-}
-
-function getUsers(): StoredUser[] {
-  try {
-    return JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
-  } catch { return []; }
-}
-
-function saveSession(user: { email: string; name: string }) {
-  localStorage.setItem(SESSION_KEY, JSON.stringify({ ...user, loggedIn: true }));
-}
-
-// ─── COMPONENT ────────────────────────────────────────────────────────────────
 export default function AuthPage() {
   const router = useRouter();
+  const { status } = useSession();
   const [tab, setTab] = useState<"login" | "register">("login");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -38,49 +15,80 @@ export default function AuthPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e: FormEvent) => {
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/checkout");
+    }
+  }, [status, router]);
+
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    setTimeout(() => {
-      const users = getUsers();
-      const user = users.find(
-        (u) => u.email === email.toLowerCase() && u.passwordHash === hashSimple(password)
-      );
-      if (!user) {
+
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (res?.error) {
         setError("E-Mail oder Passwort ist falsch.");
         setLoading(false);
-        return;
+      } else {
+        router.push("/checkout");
+        router.refresh();
       }
-      saveSession({ email: user.email, name: user.name });
-      router.push("/checkout");
-    }, 600);
+    } catch (err) {
+      setError("Ein Fehler ist aufgetreten.");
+      setLoading(false);
+    }
   };
 
-  const handleRegister = (e: FormEvent) => {
+  const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    setTimeout(() => {
-      const users = getUsers();
-      if (users.find((u) => u.email === email.toLowerCase())) {
-        setError("Diese E-Mail-Adresse wird bereits verwendet.");
+
+    try {
+      const registerRes = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await registerRes.json();
+
+      if (!registerRes.ok) {
+        setError(data.error || "Registrierung fehlgeschlagen.");
         setLoading(false);
         return;
       }
-      const newUser: StoredUser = {
-        email: email.toLowerCase(),
-        name: name.trim(),
-        passwordHash: hashSimple(password),
-      };
-      localStorage.setItem(USERS_KEY, JSON.stringify([...users, newUser]));
-      saveSession({ email: newUser.email, name: newUser.name });
-      router.push("/checkout");
-    }, 600);
+
+      // If registration is successful, log them in automatically
+      const res = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (res?.error) {
+        setError("Konto erstellt, aber Anmeldung fehlgeschlagen.");
+        setLoading(false);
+      } else {
+        router.push("/checkout");
+        router.refresh();
+      }
+    } catch (err) {
+      setError("Ein Fehler ist aufgetreten.");
+      setLoading(false);
+    }
   };
 
   const handleGuest = () => {
-    saveSession({ email: "gast@iod.ch", name: "Gast" });
+    // In a real app with next-auth, guest checkout might just redirect to checkout
+    // without saving a session, or use an anonymous session.
     router.push("/checkout");
   };
 

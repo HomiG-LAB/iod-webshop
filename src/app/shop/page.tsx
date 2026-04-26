@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { productsData, collabData, showcaseData, sizesData } from "../../data/mockData";
 import { useCart, CartItem } from "../../context/CartContext";
+import { client } from "../../sanity/client";
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 type Product = {
@@ -161,12 +162,38 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
 
 // ─── MAIN SHOP PAGE ───────────────────────────────────────────────────────────
 export default function Shop() {
+  const [sanityProducts, setSanityProducts] = useState(allProducts);
   const [filter, setFilter] = useState("ALL");
   const { addItem, openDrawer } = useCart();
 
+  useEffect(() => {
+    client.fetch(`*[_type == "product"]{
+      "id": slug.current,
+      "name": title,
+      price,
+      badge,
+      badgeType,
+      description
+    }`).then((data: any[]) => {
+      const merged = data.map(sp => {
+        const match = allProducts.find(p => p.id === sp.id);
+        return {
+          id: sp.id,
+          name: sp.name,
+          price: `CHF ${sp.price}.00`,
+          badge: sp.badge,
+          badgeType: sp.badgeType || "primary",
+          image: match?.image || "/product_monster_track.png",
+          alt: sp.description || match?.alt || "IOD Premium Sleeve"
+        };
+      });
+      setSanityProducts(merged);
+    }).catch(console.error);
+  }, []);
+
   const filteredProducts = filter === "ALL"
-    ? allProducts
-    : allProducts.filter((p) => {
+    ? sanityProducts
+    : sanityProducts.filter((p) => {
         if (filter === "TRENDING" && p.badge === "TRENDING") return true;
         if (filter === "NEW" && (p.badge === "NEW" || p.badge === "NEW DROP")) return true;
         if (filter === "GOAT" && collabData.designs.find((d) => d.name === p.name)) return true;

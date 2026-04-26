@@ -4,8 +4,13 @@ import { useCart } from "../context/CartContext";
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
+
 export default function CartDrawer() {
   const { items, isOpen, totalItems, totalPrice, closeDrawer, removeItem, updateQty } = useCart();
+  const { data: session } = useSession();
+  const pathname = usePathname();
 
   // Prevent body scroll when open
   useEffect(() => {
@@ -17,7 +22,7 @@ export default function CartDrawer() {
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || pathname.startsWith("/studio")) return null;
 
   return (
     <>
@@ -158,7 +163,7 @@ export default function CartDrawer() {
 
             {/* CTA */}
             <Link
-              href="/auth"
+              href={session ? "/checkout" : "/auth"}
               onClick={closeDrawer}
               className="block w-full py-4 bg-[#c8f400] text-[#1a2000] font-headline font-black text-sm uppercase tracking-widest text-center rounded-xl hover:shadow-[0_0_24px_rgba(200,244,0,0.4)] transition-all active:scale-95"
             >

@@ -1,3 +1,4 @@
+
 import {
   navLinks,
   heroData,
@@ -10,9 +11,13 @@ import {
   faqData,
   newsletterData,
   sizesData,
+  productsData as mockProductsData,
+  teamData,
 } from "../data/mockData";
-
-// ─────────────────────────────────────────────────────────────────────────────
+import { client } from "../sanity/client";
+import { urlFor } from "../sanity/image";
+import TeamCarousel from "../components/TeamCarousel";
+// -----------------------------------------------------------------------------
 // IOD Webshop Homepage — Skin: "Kinetic Asphalt"
 // Page structure (from user brief + Stitch screens):
 //   1. TopNav (Shop | Designs | Grössen | Story)
@@ -26,14 +31,49 @@ import {
 //   9. Newsletter — Join the Crew
 //  10. Footer (DACH legal)
 //  11. Mobile Bottom Nav
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
-export default function Home() {
+export default async function Home() {
+  const sanityProductsRaw = await client.fetch(`*[_type == "product"]{
+    "id": slug.current,
+    "name": title,
+    price,
+    badge,
+    badgeType,
+    description
+  }`);
+
+  const productsData = sanityProductsRaw.map((sp: any) => {
+    const match = mockProductsData.find(m => m.id === sp.id);
+    return {
+      id: sp.id,
+      name: sp.name,
+      price: `CHF ${sp.price}.00`,
+      badge: sp.badge,
+      badgeType: sp.badgeType || "primary",
+      image: sp.image ? urlFor(sp.image).url() : (match?.image || "/product_monster_track.png"),
+      alt: sp.description || match?.alt || "IOD Premium Sleeve"
+    };
+  });
+
+  const homePage = await client.fetch(`*[_type == "homePage"][0]`);
+  
+  const hero = homePage?.hero || heroData;
+  const usp = homePage?.usp || uspData;
+  const sizes = homePage?.sizes || sizesData;
+  const story = homePage?.story || storyData;
+  const lookbook = homePage?.lookbook || lookbookData;
+  const faq = homePage?.faq || faqData;
+  const newsletter = homePage?.newsletter || newsletterData;
+
+  const heroImage = homePage?.hero?.backgroundImage ? urlFor(homePage.hero.backgroundImage).url() : heroData.image;
+  const storyImage = homePage?.story?.image ? urlFor(homePage.story.image).url() : "/family_story_1777205766624.png";
+
   return (
     <>
 
       <main className="pt-28">
-        {/* ─── 2. HERO ─────────────────────────────────────────────────────── */}
+        {/* --- 2. HERO ------------------------------------------------------- */}
         <section id="hero" aria-label="Hero" className="relative px-4 sm:px-6 max-w-7xl mx-auto mb-32">
           <div className="relative overflow-hidden rounded-[2.5rem] bg-[#111316] min-h-[90vh] flex flex-col justify-end px-8 sm:px-16 pb-20 border border-white/[0.03]">
             
@@ -57,49 +97,49 @@ export default function Home() {
             <div className="relative z-20 w-full max-w-3xl">
               <div className="inline-flex items-center gap-2 bg-[#ff56ed]/15 border border-[#ff56ed]/30 text-[#ff56ed] px-5 py-2 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-6 w-fit -rotate-1 backdrop-blur-md">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#ff56ed] animate-pulse" aria-hidden />
-                {heroData.tagline}
+                {hero.tagline}
               </div>
 
               <h1 className="font-headline font-black italic text-[clamp(2rem,5vw,3.5rem)] leading-[0.95] tracking-tighter mb-5 uppercase">
-                <span className="text-[#e8ecef]">SECOND</span>{" "}
-                <span className="text-[#c8f400] text-glow-lime">SKIN.</span>
+                <span className="text-[#e8ecef]">{hero.titlePart1 || "SECOND"}</span>{" "}
+                <span className="text-[#c8f400] text-glow-lime">{hero.titlePart2 || "SKIN."}</span>
                 <br />
-                <span className="text-[#e8ecef]">BUT WITH A</span>{" "}
-                <span className="text-[#00c8f0] glow-cyan">STATEMENT.</span>
+                <span className="text-[#e8ecef]">{hero.titlePart3 || "BUT WITH A"}</span>{" "}
+                <span className="text-[#00c8f0] glow-cyan">{hero.titlePart4 || "STATEMENT."}</span>
               </h1>
 
               <p className="text-[#8d9ba8] text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
-                {heroData.subTagline}
+                {hero.subTagline}
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <button id="hero-cta-order" className="btn-kinetic-primary px-10 py-4 text-sm shadow-[0_0_30px_rgba(200,244,0,0.3)]">
-                  {heroData.cta1}
+                  {hero.cta1}
                 </button>
                 <button id="hero-cta-learn" className="btn-kinetic-ghost bg-[#0a0b0d]/40 backdrop-blur-md px-10 py-4 text-sm hover:bg-[#00c8f0]/10 border-white/15 hover:border-[#00c8f0]">
-                  {heroData.cta2}
+                  {hero.cta2}
                 </button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ─── 3. USP — Produkt Infos ─────────────────────────────────────── */}
+        {/* --- 3. USP — Produkt Infos --------------------------------------- */}
         <section id="shop" aria-label="Produkt USPs" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
           <div className="mb-16 max-w-3xl mx-auto text-center">
             <span className="font-headline text-xs font-black uppercase tracking-[0.2em] text-[#00c8f0] block mb-4">
-              {uspData.eyebrow}
+              {usp.eyebrow}
             </span>
             <h2 className="font-headline font-black text-5xl sm:text-6xl text-[#e8ecef] leading-tight tracking-tighter mb-6 whitespace-pre-line">
-              {uspData.title}
+              {usp.title}
             </h2>
             <p className="text-[#8d9ba8] text-lg leading-relaxed">
-              {uspData.description}
+              {usp.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8">
-            {uspData.points.map((point, i) => (
+            {usp.points?.map((point: any, i: number) => (
               <div
                 key={i}
                 id={`usp-${i}`}
@@ -117,7 +157,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 4. FEATURED DESIGNS ──────────────────────────────────── */}
+        {/* --- 4. FEATURED DESIGNS ------------------------------------ */}
         <section id="showcase" aria-label="Featured Designs" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div>
@@ -137,19 +177,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {/* Show a few featured products here from collabData and showcaseData */}
-            {[
-              {
-                id: "monster-track",
-                name: "MONSTER TRACK",
-                description: "Neon-Lime + Graffiti-Silhouette.",
-                badge: "NEW DROP",
-                badgeColor: "primary",
-                image: showcaseData.image,
-                price: "39.00 CHF",
-              },
-              ...collabData.designs.slice(0, 3).map(d => ({...d, price: "39.00 CHF"}))
-            ].map((design, i) => {
+            {productsData.slice(0, 4).map((design, i) => {
               const badgeColors: Record<string, string> = {
                 primary:  "bg-[#c8f400] text-[#1a2000]",
                 secondary: "bg-[#00c8f0] text-[#001f29]",
@@ -160,13 +188,13 @@ export default function Home() {
                   <div className="relative bg-[#161a1e] rounded-xl overflow-hidden aspect-square mb-3 flex items-center justify-center p-6 border border-white/[0.05] hover:border-[#c8f400]/30 transition-all duration-300">
                     <div className="absolute inset-0 asphalt-texture opacity-5" aria-hidden />
                     <img src={design.image} alt={design.name} className="relative z-10 w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
-                    <div className={`absolute top-3 right-3 z-20 px-2.5 py-0.5 rounded-full text-[10px] font-headline font-black uppercase tracking-widest ${badgeColors[design.badgeColor] ?? badgeColors.primary}`}>
+                    <div className={`absolute top-3 right-3 z-20 px-2.5 py-0.5 rounded-full text-[10px] font-headline font-black uppercase tracking-widest ${badgeColors[design.badgeType] ?? badgeColors.primary}`}>
                       {design.badge}
                     </div>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[#c8f400]/10 to-transparent" aria-hidden />
                   </div>
                   <h3 className="font-headline text-sm font-black uppercase tracking-widest text-[#e8ecef]">{design.name}</h3>
-                  <p className="text-[#8d9ba8] text-xs leading-relaxed mt-1">{design.description}</p>
+                  <p className="text-[#8d9ba8] text-xs leading-relaxed mt-1">{design.alt}</p>
                   <p className="text-[#c8f400] font-headline font-black text-sm mt-2">{design.price}</p>
                 </div>
               );
@@ -180,23 +208,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 5. SIZES GUIDE ──────────────────────────────────────────────── */}
+        {/* --- 5. SIZES GUIDE ------------------------------------------------ */}
         <section id="sizes" aria-label="Grössen Guide" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
           <div className="mb-12 text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 border border-[#c8f400]/40 text-[#c8f400] px-4 py-1 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-4">
               <span className="material-symbols-outlined text-sm">straighten</span>
-              {sizesData.eyebrow}
+              {sizes.eyebrow}
             </div>
             <h2 className="font-headline font-black text-5xl sm:text-6xl text-[#e8ecef] leading-tight tracking-tighter mb-6 whitespace-pre-line">
-              {sizesData.title}
+              {sizes.title}
             </h2>
             <p className="text-[#8d9ba8] text-lg leading-relaxed">
-              {sizesData.description}
+              {sizes.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {sizesData.categories.map((category) => {
+            {sizes.categories?.map((category: any, i: number) => {
               const themeColors: Record<string, { border: string, text: string, bg: string, glow: string }> = {
                 primary: { border: "group-hover:border-[#c8f400]/50", text: "text-[#c8f400]", bg: "from-[#c8f400]/10", glow: "glow-lime" },
                 secondary: { border: "group-hover:border-[#00c8f0]/50", text: "text-[#00c8f0]", bg: "from-[#00c8f0]/10", glow: "glow-cyan" },
@@ -205,7 +233,7 @@ export default function Home() {
               const theme = themeColors[category.color] || themeColors.primary;
 
               return (
-                <div key={category.id} className={`group relative bg-[#161a1e] rounded-xl overflow-hidden p-6 sm:p-8 border border-white/[0.05] ${theme.border} transition-all duration-300 min-h-[300px] flex flex-col justify-end`}>
+                <div key={category.id || i} className={`group relative bg-[#161a1e] rounded-xl overflow-hidden p-6 sm:p-8 border border-white/[0.05] ${theme.border} transition-all duration-300 min-h-[300px] flex flex-col justify-end`}>
                   {/* Huge Background Text (Watermark) */}
                   <div className="absolute top-4 left-4 right-4 text-7xl md:text-8xl font-headline font-black text-white/[0.02] tracking-tighter leading-none select-none pointer-events-none break-words">
                     {category.age}
@@ -233,12 +261,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 6. STORY — Founder Section ─────────────────────────────────── */}
+        {/* --- 6. STORY — Founder Section ----------------------------------- */}
         <section id="story" aria-label="Die IOD Story" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
           <div className="relative overflow-hidden rounded-[2rem] bg-transparent grid md:grid-cols-2 gap-8 md:gap-16 min-h-[460px] items-center">
             {/* Left — decorative asphalt + neon streak */}
             <div className="relative overflow-hidden h-[300px] md:h-full rounded-[2rem] border border-white/[0.03]">
-              <img src="/family_story_1777205766624.png" alt="IOD Familie — Startup Collaboration" className="absolute inset-0 w-full h-full object-cover" />
+              <img src={storyImage} alt="IOD Familie" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-br from-[#c8f400]/10 via-[#111316]/50 to-transparent mix-blend-overlay" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d] via-transparent to-transparent opacity-80" />
             </div>
@@ -246,44 +274,61 @@ export default function Home() {
             {/* Right — text */}
             <div className="flex flex-col justify-center py-8">
               <span className="font-headline text-xs font-black uppercase tracking-[0.2em] text-[#00c8f0] block mb-4">
-                {storyData.eyebrow}
+                {story.eyebrow}
               </span>
               <h2 className="font-headline font-black text-4xl sm:text-5xl text-[#e8ecef] leading-tight tracking-tighter mb-6 whitespace-pre-line">
-                {storyData.title}
+                {story.title}
               </h2>
-              <p className="text-[#8d9ba8] text-base leading-relaxed mb-8">
-                {storyData.body}
+              <p className="text-[#8d9ba8] text-base leading-relaxed mb-8 whitespace-pre-line">
+                {story.body}
               </p>
               <button id="story-cta" className="btn-kinetic-ghost w-fit px-8 py-3 text-sm">
-                {storyData.ctaLabel}
+                {story.ctaLabel}
               </button>
             </div>
           </div>
         </section>
 
-        {/* ─── 7. ACTION LOOKBOOK ─────────────────────────────────────────── */}
+        {/* --- 6.5 TEAM — Meet the Crew ------------------------------------ */}
+        <section id="team" aria-label="Das IOD Team" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
+          <div className="text-center mb-16">
+            <span className="font-headline text-xs font-black uppercase tracking-[0.2em] text-[#c8f400] block mb-3">
+              {teamData.eyebrow}
+            </span>
+            <h2 className="font-headline font-black text-4xl sm:text-6xl text-[#e8ecef] tracking-tighter leading-none mb-4 whitespace-pre-line">
+              {teamData.title}
+            </h2>
+            <p className="text-[#8d9ba8] text-sm max-w-md mx-auto leading-relaxed">
+              {teamData.description}
+            </p>
+          </div>
+
+          <TeamCarousel />
+        </section>
+
+        {/* --- 7. ACTION LOOKBOOK ------------------------------------------- */}
         <section id="flow" aria-label="IOD Action Lookbook" className="px-4 sm:px-6 max-w-7xl mx-auto mb-40">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-[#00c8f0]/10 border border-[#00c8f0]/20 text-[#00c8f0] px-4 py-1.5 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-5">
               <span className="material-symbols-outlined text-sm">photo_camera</span>
-              {lookbookData.badge}
+              {lookbook.badge}
             </div>
             <h2 className="font-headline font-black text-5xl sm:text-6xl tracking-tighter text-[#e8ecef] leading-none mb-4">
-              {lookbookData.title}
+              {lookbook.title}
             </h2>
             <p className="text-[#8d9ba8] text-sm max-w-md mx-auto leading-relaxed">
-              {lookbookData.description}
+              {lookbook.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {lookbookData.shots.map((shot) => (
+            {lookbook.shots?.map((shot: any, i: number) => (
               <div
-                key={shot.id}
-                id={`lookbook-shot-${shot.id}`}
+                key={shot.id || i}
+                id={`lookbook-shot-${shot.id || i}`}
                 className="group relative overflow-hidden rounded-xl cursor-pointer aspect-[4/5]"
               >
-                <img src={shot.image} alt={shot.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src={shot.image && typeof shot.image !== 'string' ? urlFor(shot.image).url() : (shot.image || "/lookbook_fallback.png")} alt={shot.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d]/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
                 <div className="absolute bottom-4 left-4 right-4 z-10">
                   <span className="inline-block font-headline text-[10px] font-black uppercase tracking-widest text-[#00c8f0] border border-[#00c8f0]/40 px-2.5 py-0.5 rounded-full mb-2">
@@ -297,12 +342,12 @@ export default function Home() {
 
           <div className="mt-8 flex justify-center">
             <button id="lookbook-discover" className="btn-kinetic-primary px-10 py-4 text-sm">
-              {lookbookData.ctaLabel}
+              {lookbook.ctaLabel}
             </button>
           </div>
         </section>
 
-        {/* ─── 8. FAQ ─────────────────────────────────────────────────────── */}
+        {/* --- 8. FAQ ------------------------------------------------------- */}
         <section id="faq" aria-label="FAQ" className="px-4 sm:px-6 max-w-4xl mx-auto mb-40">
           <div className="text-center mb-16">
             <span className="font-headline text-xs font-black uppercase tracking-[0.2em] text-[#ff56ed] block mb-3">
@@ -314,47 +359,47 @@ export default function Home() {
           </div>
 
           <div className="space-y-2">
-            {faqData.map((item, i) => (
+            {faq?.map((item: any, i: number) => (
               <details
                 key={i}
                 id={`faq-${i}`}
                 className="group border-b border-white/[0.08] overflow-hidden cursor-pointer hover:border-[#c8f400]/40 transition-colors pb-2"
               >
                 <summary className="flex justify-between items-center py-5 font-headline font-bold text-base sm:text-lg text-[#e8ecef] list-none select-none">
-                  {item.q}
+                  {item.question || item.q}
                   <span className="material-symbols-outlined text-[#8d9ba8] group-hover:text-[#c8f400] text-2xl ml-6 group-open:rotate-45 transition-transform duration-300 flex-shrink-0">
                     add
                   </span>
                 </summary>
-                <div className="pb-6 pr-12 text-[#8d9ba8] text-base leading-relaxed pt-2">
-                  {item.a}
+                <div className="pb-6 pr-12 text-[#8d9ba8] text-base leading-relaxed pt-2 whitespace-pre-line">
+                  {item.answer || item.a}
                 </div>
               </details>
             ))}
           </div>
         </section>
 
-        {/* ─── 9. NEWSLETTER ──────────────────────────────────────────────── */}
+        {/* --- 9. NEWSLETTER ------------------------------------------------ */}
         <section id="crew" aria-label="Join the Crew" className="px-4 sm:px-6 max-w-5xl mx-auto mb-32">
           <div className="relative overflow-hidden rounded-[2.5rem] bg-[#c8f400] px-8 sm:px-16 py-16 flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-white/12 blur-2xl" aria-hidden />
             <div className="absolute -bottom-10 right-10 w-56 h-56 rounded-full bg-[#a0c200]/40 blur-3xl" aria-hidden />
             <div className="relative z-10">
               <h2 className="font-headline font-black text-4xl sm:text-5xl uppercase tracking-tighter text-[#1a2000] leading-none mb-2">
-                {newsletterData.title}
+                {newsletter.title}
               </h2>
-              <p className="text-[#384900] font-medium text-base">{newsletterData.description}</p>
+              <p className="text-[#384900] font-medium text-base">{newsletter.description}</p>
             </div>
             <div className="relative z-10 flex w-full md:w-auto gap-2">
               <input
                 id="newsletter-input"
                 type="email"
-                placeholder={newsletterData.placeholder}
+                placeholder={newsletter.placeholder}
                 className="bg-[#1a2000]/15 border-none rounded-full px-6 py-3 w-full md:w-72 placeholder:text-[#1a2000]/50 text-[#1a2000] font-medium focus:outline-none focus:ring-2 focus:ring-[#1a2000]/40"
                 aria-label="E-Mail Adresse"
               />
               <button id="newsletter-submit" className="btn-kinetic-primary !bg-[#1a2000] !text-[#c8f400] px-8 py-3 text-sm whitespace-nowrap">
-                {newsletterData.buttonText}
+                {newsletter.buttonText}
               </button>
             </div>
           </div>

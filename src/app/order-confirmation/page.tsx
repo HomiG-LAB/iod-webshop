@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { useCart } from "../../context/CartContext";
 
 type Order = {
   id: string;
@@ -17,18 +18,25 @@ type Order = {
 function ConfirmationContent() {
   const params = useSearchParams();
   const orderId = params.get("id");
+  const sessionId = params.get("session_id");
+  const { clearCart } = useCart();
   const [order, setOrder] = useState<Order | null>(null);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    try {
-      const orders: Order[] = JSON.parse(localStorage.getItem("iod_orders_v1") || "[]");
-      const found = orders.find((o) => o.id === orderId);
-      setOrder(found || null);
-    } catch {}
+    if (sessionId) {
+      // It's a Stripe order, we clear the cart
+      clearCart();
+    } else if (orderId) {
+      try {
+        const orders: Order[] = JSON.parse(localStorage.getItem("iod_orders_v1") || "[]");
+        const found = orders.find((o) => o.id === orderId);
+        setOrder(found || null);
+      } catch {}
+    }
     // Trigger entrance animation
     setTimeout(() => setShow(true), 100);
-  }, [orderId]);
+  }, [orderId, sessionId, clearCart]);
 
   return (
     <div
@@ -57,6 +65,12 @@ function ConfirmationContent() {
         {orderId && (
           <p className="text-[#8d9ba8] text-base mb-2">
             Bestellnummer: <span className="font-headline font-black text-[#e8ecef]">{orderId}</span>
+          </p>
+        )}
+        
+        {sessionId && (
+          <p className="text-[#8d9ba8] text-base mb-2">
+            Stripe Session ID: <span className="font-headline font-black text-[#e8ecef]">{sessionId.substring(0, 16)}...</span>
           </p>
         )}
 
