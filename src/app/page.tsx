@@ -65,7 +65,10 @@ export default async function Home() {
   const usp = homePage?.usp || uspData;
   const sizes = homePage?.sizes || sizesData;
   const story = homePage?.story || storyData;
-  const lookbook = homePage?.lookbook || lookbookData;
+  const lookbook = {
+    ...(homePage?.lookbook || lookbookData),
+    shots: lookbookData.shots, // Always use local action images for lookbook
+  };
   const faq = homePage?.faq || faqData;
   const newsletter = homePage?.newsletter || newsletterData;
 
