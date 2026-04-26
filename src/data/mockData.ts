@@ -8,10 +8,10 @@
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 export const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
-  { label: "Designs", href: "/#showcase" },
-  { label: "Grössen", href: "/#sizes" },
+  { label: "Design", href: "/#showcase" },
   { label: "Story", href: "/#story" },
+  { label: "Team", href: "/#team" },
+  { label: "Store", href: "/shop" },
 ];
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
@@ -23,7 +23,7 @@ export const heroData = {
   cta1: "JETZT BESTELLEN",
   cta2: "MEHR ERFAHREN",
   image:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuA014PgZ-2zmS3vXq8GhfQFnKbBDrXzk-m3O-bMBjK82Z732GjIY-WMmijKxq0kmQ9ohNGvhAXYOs_ThfpzVeDkFZImHySobBXVUR38gNvXHI_xIIZsI_pXwneEpMVYJy_pkvVK62QFl-ekDqtwI1MvQLGX69DZI5l-Mgpvy7I7fSN6fDKvfk3rtqdLoOoyt3eNl8iatHgNTd1nhZuytCfb91niXV1re0-H-PYZzV31SVd3y6FmYujjMqcADBLnvyC9yfR4ZjEqHfY",
+    "/pumptrack_seamless_sleeve_1777204026688.png",
   alt: "Kind auf Pumptrack mit IOD Neon-Ellenbogen-Sleeves",
 };
 
@@ -68,7 +68,7 @@ export const showcaseData = {
   price: "39.00 CHF",
   priceNote: "* inkl. MwSt., zzgl. Versandkosten",
   image:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBme__7JPNhkpmbE7MY40lWOc17gIGXMdjR1iNTczM4MJwXtlg7RkZMct3XqRzodb4uOSOoheXInTYxk4LFaOK21pmF140ENeb1gmnlPQsvmfEzuk_5oWHL8u6ZbdeJEz4K-jVZ2N3gXnROeSQybY6oMJHIoKJdUTFiWPXpsPVw_DpugDHB3T00RefrWb9pdWja82rfs5YWLtzcOJ7MojnEMWl9HSs_4OJ3C8zKhrk1QCYF0Anpu2hzU3rIFs6M2MGY7GekmrYKc9Y",
+    "/pumptrack_seamless_sleeve_1777204026688.png",
   alt: "Monster Track Edition Sleeve auf Kinderarm am Pumptrack",
   colorways: ["#7c3aed", "#22d3ee", "#a3e635", "#f43f5e"],
 };
@@ -89,7 +89,7 @@ export const collabData = {
       badge: "SOLD OUT",
       badgeColor: "tertiary",
       image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuADOdrlwYGFsSUw0mrdqsJIPwBjGh6Y8bzCiPv31gtoxbEZWsVmNKFQPxz26wIEeDaacfIqP9NPibY2z2fVHA_pYgCenJfrfpLIPp_Lf1FwB8LyHR3dQdTW3WkXwBsmjBRmuNxmLRzeBRjq9wsgPl12hUlvMLilhfYjHpoI7hWYwX3zwAVOWG12h4cbVagehJyKzabQ5WzPvJNWi9MP3PUX1hy1yxc2rDqvOoUeugc-2Yz01PpATzrNSb70aVX77ez6qGfLDmcVX8E",
+        "/product_victory_lap.png",
     },
     {
       id: "pro-street",
@@ -98,7 +98,7 @@ export const collabData = {
       badge: "5 LEFT",
       badgeColor: "primary",
       image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDGN6Ukr97pXLSXTqN8kVfI2D802hs-bxTDOCFYu3YeUTiDdAoNVvyQAXYIkRIKbiqbOSGlxlNmCj1neNTMQojet_ZIcKGSRBqAexIXuld5Vji1NUFQZ0_T9y7aYfIqUGBkvH8T2I6K043RyU0UoCNDBzhFm1zaI70NiEmmg9Hul81ux6ik0c6aN40MedSGZIGXlhuF03Ar4dQFzP8u2FTcZJSRm19HxEMCSufOSe0Drj3KlZziCZQXhZ1ySYb0Wl4zrnyJd9Gwjhw",
+        "/product_pro_street.png",
     },
     {
       id: "goat-mask",
@@ -107,7 +107,7 @@ export const collabData = {
       badge: "HOT",
       badgeColor: "secondary",
       image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBWEoCeOA2KWzf1hps8DYpLdfOIe5MrHenR5LLhNKR-eibADaJaAspHwIBlikdE_CtOsaSVyXfHW3BortRLm0Tp2Dg86qK3C5ojyZaVVRgVda2sS0mlmI8r6T5Ow9tl8hsC4sFbBOXDYLCSZ3lUy8yCN90-Lci4U3Yptxyc2QG2Qta9bqY7JG7zCB2oTP_lNYKcNlxM2ssHVY-LD4XcqYwVAPTjJ_e8kU9ZKPjFxFkR8Jw9pTzghvDB7zgzQxWx6fO8B58i3FW80U8",
+        "/product_goat_mask.png",
     },
     {
       id: "victory-lap",
@@ -116,7 +116,7 @@ export const collabData = {
       badge: "NEW",
       badgeColor: "primary",
       image:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDuTC-7YRcxp6_8Mxzp2hLfP5KnTI2D802hs-bxTDOCFYu3YeUTiDdAoNVvyQAXYIkRIKbiqbOSGlxlNmCj1neNT",
+        "/product_victory_lap.png",
     },
   ],
 };
@@ -166,7 +166,7 @@ export const uspData = {
     "Das IOD sitzt so nah am Arm, dass du vergisst, dass du überhaupt Schutz trägst. Keine Polster, kein Klotz -- ein hauchdünner Sleeve mit integriertem Ellbogenpad und deinem Design drauf. Für alle ab Kids- bis Erwachsenengrösse.",
   points: [
     {
-      icon: "all_out",
+      icon: "fit_screen",
       title: "Second-Skin Passform",
       description: "4-Way Stretch, bewegt sich mit dir -- kein Einschneiden, kein Verrutschen.",
     },
@@ -197,7 +197,7 @@ export const uspData = {
 export const storyData = {
   eyebrow: "UNSERE STORY",
   title: "Ein Startup.\nEine Familie.\nEin Ziel.",
-  body: "Wir haben IOD gegründet, weil wir glauben: Unternehmertum lernt man nicht aus Büchern -- sondern indem man einfach anfängt. Der Gewinn geht in Bildung. Das Produkt kommt aus der Schweiz.",
+  body: "Wir haben IOD gegründet, weil wir glauben: Unternehmertum lernt man nicht aus Büchern -- sondern indem man einfach anfängt. Der Gewinn geht in Bildung. Das Produkt kommt aus der Schweiz.\n\nNachhaltigkeit ist unser Antrieb: Wir setzen auf 100% recycelte Textilien, komplett plastikfreie Verpackungen und umweltschonende Produktionsprozesse. Jedes Sleeve ist nicht nur Performance-Ausrüstung, sondern auch ein Statement für unsere Umwelt.",
   ctaLabel: "MEHR ÜBER UNS",
 };
 
@@ -225,6 +225,46 @@ export const faqData = [
   },
 ];
 
+// ─── SIZES GUIDE ──────────────────────────────────────────────────────────────
+export const sizesData = {
+  eyebrow: "PERFEKTER FIT",
+  title: "FIND DEINE\nGRÖSSE",
+  description: "Kein Maßband nötig. Wir haben die Sleeves so entwickelt, dass sie sich deiner Altersgruppe und deinem Flow anpassen. Wähle deine Kategorie:",
+  categories: [
+    {
+      id: "mini",
+      age: "2–5 JAHRE",
+      title: "MINI REBELS",
+      description: "Für die allerersten Rollversuche. Hält, schützt, stört nicht auf dem Asphalt.",
+      icon: "child_care",
+      color: "primary"
+    },
+    {
+      id: "kids",
+      age: "6–11 JAHRE",
+      title: "ROOKIES",
+      description: "Pausenplatz-Helden & Rampen-Stürmer. Volle Bewegungsfreiheit für endlose Sessions.",
+      icon: "sports_motorsports", // Alternatively: skateboarding
+      color: "secondary"
+    },
+    {
+      id: "teens",
+      age: "12–15 JAHRE",
+      title: "YOUNG BLOOD",
+      description: "Higher Jumps, More Speed. Sitzt wie eine zweite Haut – egal wie hart der Drop ist.",
+      icon: "bolt",
+      color: "tertiary"
+    },
+    {
+      id: "adults",
+      age: "16+ JAHRE",
+      title: "PROS",
+      description: "Performance-Gear für höchste Ansprüche. Kein Klotz, nur Flow und maximaler Style.",
+      icon: "local_fire_department",
+      color: "primary"
+    }
+  ]
+};
 
 // Legacy exports for backwards compatibility
 export const benefitsData = {
@@ -235,7 +275,7 @@ export const benefitsData = {
       "Unser proprietäres Textile-Only-Gewebe schützt die Haut vor Asphalt-Abrieb ohne den Bulk von Plastikschalen.",
     cta: "DIE TECHNIK ENTDECKEN",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBWEoCeOA2KWzf1hps8DYpLdfOIe5MrHenR5LLhNKR-eibADaJaAspHwIBlikdE_CtOsaSVyXfHW3BortRLm0Tp2Dg86qK3C5ojyZaVVRgVda2sS0mlmI8r6T5Ow9tl8hsC4sFbBOXDYLCSZ3lUy8yCN90-Lci4U3Yptxyc2QG2Qta9bqY7JG7zCB2oTP_lNYKcNlxM2ssHVY-LD4XcqYwVAPTjJ_e8kU9ZKPjFxFkR8Jw9pTzghvDB7zgzQxWx6fO8B58i3FW80U8",
+      "/pumptrack_seamless_sleeve_1777204026688.png",
   },
   card1: { icon: "wash", title: "MESS PROOF", description: "Toss them in the wash." },
   card2: { icon: "child_care", title: "5-10 JAHRE", description: "Engineered for the growth spurt." },
@@ -250,7 +290,7 @@ export const productsData = [
     badge: "TRENDING",
     badgeType: "primary",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuADOdrlwYGFsSUw0mrdqsJIPwBjGh6Y8bzCiPv31gtoxbEZWsVmNKFQPxz26wIEeDaacfIqP9NPibY2z2fVHA_pYgCenJfrfpLIPp_Lf1FwB8LyHR3dQdTW3WkXwBsmjBRmuNxmLRzeBRjq9wsgPl12hUlvMLilhfYjHpoI7hWYwX3zwAVOWG12h4cbVagehJyKzabQ5WzPvJNWi9MP3PUX1hy1yxc2rDqvOoUeugc-2Yz01PpATzrNSb70aVX77ez6qGfLDmcVX8E",
+      "/product_monster_track.png",
     alt: "Monster Track Edition Sleeve",
   },
   {
@@ -260,7 +300,7 @@ export const productsData = [
     badge: "5 LEFT",
     badgeType: "tertiary",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDGN6Ukr97pXLSXTqN8kVfI2D802hs-bxTDOCFYu3YeUTiDdAoNVvyQAXYIkRIKbiqbOSGlxlNmCj1neNTMQojet_ZIcKGSRBqAexIXuld5Vji1NUFQZ0_T9y7aYfIqUGBkvH8T2I6K043RyU0UoCNDBzhFm1zaI70NiEmmg9Hul81ux6ik0c6aN40MedSGZIGXlhuF03Ar4dQFzP8u2FTcZJSRm19HxEMCSufOSe0Drj3KlZziCZQXhZ1ySYb0Wl4zrnyJd9Gwjhw",
+      "/product_pro_street.png",
     alt: "CR7 Street Edition",
   },
   {
@@ -270,7 +310,7 @@ export const productsData = [
     badge: "HOT",
     badgeType: "secondary",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBWEoCeOA2KWzf1hps8DYpLdfOIe5MrHenR5LLhNKR-eibADaJaAspHwIBlikdE_CtOsaSVyXfHW3BortRLm0Tp2Dg86qK3C5ojyZaVVRgVda2sS0mlmI8r6T5Ow9tl8hsC4sFbBOXDYLCSZ3lUy8yCN90-Lci4U3Yptxyc2QG2Qta9bqY7JG7zCB2oTP_lNYKcNlxM2ssHVY-LD4XcqYwVAPTjJ_e8kU9ZKPjFxFkR8Jw9pTzghvDB7zgzQxWx6fO8B58i3FW80U8",
+      "/product_goat_mask.png",
     alt: "GOAT Mask Edition",
   },
   {
@@ -280,7 +320,7 @@ export const productsData = [
     badge: null,
     badgeType: "primary",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDuTC-7YRcxp6_8Mxzp2hLfP5KnTI2D802hs",
+      "/product_victory_lap.png",
     alt: "Pumptrack Flow Sleeve",
   },
 ];
@@ -295,7 +335,7 @@ export const philosophyData = {
     { title: "Recycled High-Tech Fasern", type: "tertiary" },
   ],
   image:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuA8VuCJlTWz0lUUg005uT2QdqphyYv-93nkiAAOR0RXSslLGJjbhw96a0ek1WTJph8dP9ngasOIjDFToIdOooE_JKKyqqjk5L29iIAHp3jseysw0Ed1VSLk4e6hflRTepkU4MAbvuG1_kM1AG21gGSg1nr5FxiSUA4qeoxKoQG-dx3DpT-wIKrneJD5-e_Gl7qiCiaubIVLwqFm-zKWmFTSVSzfQH-hLIhDctUBOMIX_ocrVOVZqTHfZZPLFm1P4ZIsLIg1K4mxtoc",
+    "/founder_story_mockup_1777204011615.png",
   alt: "Kind mit IOD Sleeve am Pumptrack",
   badge: "TESTED BY REBELS",
 };

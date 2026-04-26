@@ -4,16 +4,18 @@ import { useState } from "react";
 import { navLinks } from "../data/mockData";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { totalItems, openDrawer } = useCart();
 
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-3 mx-auto mt-5 w-[95%] max-w-7xl rounded-full bg-[#0a0b0d]/85 backdrop-blur-xl border border-white/[0.06] shadow-[0_0_40px_rgba(0,0,0,0.6)]">
         <Link href="/" id="iod-logo" className="block select-none">
-          <img src="/logo-iod.png" alt="IOD Logo" className="h-16 sm:h-[72px] w-auto object-contain" />
+          <img src="/logo-iod.png" alt="IOD Logo" className="h-24 sm:h-[108px] w-auto object-contain" />
         </Link>
 
         {/* Desktop Nav */}
@@ -46,9 +48,18 @@ export default function Header() {
             <div className="w-px h-5 bg-white/10 mx-1" aria-hidden />
           </div>
 
-          <button id="cart-btn" aria-label="Warenkorb" className="p-2 text-[#8d9ba8] hover:text-[#00c8f0] transition-colors active:scale-90">
+          <button id="cart-btn" aria-label="Warenkorb" onClick={openDrawer} className="relative p-2 text-[#8d9ba8] hover:text-[#00c8f0] transition-colors active:scale-90">
             <span className="material-symbols-outlined text-2xl">shopping_bag</span>
+            {totalItems > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-[#c8f400] text-[#1a2000] font-headline font-black text-[10px] rounded-full flex items-center justify-center px-1">
+                {totalItems}
+              </span>
+            )}
           </button>
+          
+          <Link href="/shop" className="hidden sm:inline-flex btn-kinetic-primary px-6 py-2.5 text-xs items-center justify-center">
+            BESTELLEN
+          </Link>
           
           {/* Hamburger Menu Button */}
           <button 

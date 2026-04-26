@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex flex-col items-center md:items-start gap-1">
           <div className="mb-2">
-            <img src="/logo-iod.png" alt="IOD Logo" className="h-24 w-auto object-contain" />
+            <img src="/logo-iod.png" alt="IOD Logo" className="h-36 w-auto object-contain" />
           </div>
           <p className="font-headline text-xs font-medium tracking-tight text-[#3e4c58]">
             © 2024 Inside Out Design — 100% Textile. 0% Plastik.

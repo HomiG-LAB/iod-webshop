@@ -9,6 +9,7 @@ import {
   storyData,
   faqData,
   newsletterData,
+  sizesData,
 } from "../data/mockData";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -30,43 +31,6 @@ import {
 export default function Home() {
   return (
     <>
-      {/* ─── 1. TOP NAV ─────────────────────────────────────────────────── */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-3 mx-auto mt-5 w-[95%] max-w-7xl rounded-full bg-[#0a0b0d]/85 backdrop-blur-xl border border-white/[0.06] shadow-[0_0_40px_rgba(0,0,0,0.6)]">
-        <a href="#hero" id="iod-logo" className="block select-none">
-          <img src="/logo-iod.png" alt="IOD Logo" className="h-20 w-auto object-contain" />
-        </a>
-
-        <nav className="hidden md:flex items-center gap-8" aria-label="Hauptnavigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="font-headline uppercase tracking-widest text-xs font-bold text-[#8d9ba8] hover:text-[#c8f400] transition-colors duration-200"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          {/* Social Icons */}
-          <a href="https://www.instagram.com/iod_yourshop" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hidden sm:flex p-2 text-[#8d9ba8] hover:text-[#ff56ed] transition-colors duration-200 active:scale-90">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="https://tiktok.com/@iod" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hidden sm:flex p-2 text-[#8d9ba8] hover:text-[#00c8f0] transition-colors duration-200 active:scale-90">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.05a8.3 8.3 0 0 0 4.76 1.49V7.1a4.83 4.83 0 0 1-1-.41z"/></svg>
-          </a>
-
-          <div className="hidden sm:block w-px h-5 bg-white/10 mx-1" aria-hidden />
-
-          <button id="cart-btn" aria-label="Warenkorb" className="p-2 text-[#8d9ba8] hover:text-[#00c8f0] transition-colors active:scale-90">
-            <span className="material-symbols-outlined text-2xl">shopping_bag</span>
-          </button>
-          <button id="customize-btn" className="btn-kinetic-primary px-5 py-2 text-xs">
-            Bestellen
-          </button>
-        </div>
-      </header>
 
       <main className="pt-28">
         {/* ─── 2. HERO ─────────────────────────────────────────────────────── */}
@@ -153,85 +117,39 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── 4. MONSTER TRACK SHOWCASE ──────────────────────────────────── */}
-        <section id="showcase" aria-label="Monster Track Showcase" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
-          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0d0f11] to-[#111316] grid md:grid-cols-2 min-h-[600px] border border-white/[0.02]">
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#c8f400] to-transparent" aria-hidden />
-            <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-[#c8f400]/4 blur-[120px]" aria-hidden />
-
-            <div className="relative z-10 flex flex-col justify-center p-8 sm:p-14">
-              <div className="inline-flex items-center gap-2 bg-[#c8f400] text-[#1a2000] px-4 py-1 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-6 w-fit -rotate-1">
-                {showcaseData.badge}
-              </div>
-              <h2 className="font-headline font-black text-[clamp(3rem,6vw,5.5rem)] leading-[0.9] tracking-tighter text-[#e8ecef] mb-1">
-                {showcaseData.title}
-              </h2>
-              <span className="font-headline font-black text-3xl sm:text-4xl text-[#c8f400] text-glow-lime tracking-tighter block mb-6">
-                {showcaseData.subtitle}
-              </span>
-              <p className="text-[#8d9ba8] text-sm leading-relaxed mb-8 max-w-sm">
-                {showcaseData.description}
-              </p>
-
-              {/* Color swatches */}
-              <div className="flex gap-3 mb-8">
-                {showcaseData.colorways.map((color, i) => (
-                  <button
-                    key={i}
-                    id={`colorway-${i}`}
-                    aria-label={`Farbe ${i + 1}`}
-                    style={{ backgroundColor: color }}
-                    className="w-6 h-6 rounded-full border-2 border-white/20 hover:scale-125 hover:border-white/60 transition-all"
-                  />
-                ))}
-              </div>
-
-              <div className="space-y-3">
-                <div className="font-headline font-black text-3xl text-[#e8ecef]">
-                  {showcaseData.price}
-                  <span className="text-sm font-normal text-[#8d9ba8] ml-2">inkl. MwSt.</span>
-                </div>
-                <button id="showcase-add-to-cart" className="btn-kinetic-primary w-full sm:w-auto px-8 py-4 text-sm">
-                  {showcaseData.ctaShop}
-                </button>
-                <p className="text-[#3e4c58] text-xs">{showcaseData.priceNote}</p>
-              </div>
-            </div>
-
-            <div className="relative flex items-center justify-center p-8 overflow-hidden">
-              <div className="absolute inset-0 asphalt-texture opacity-6" aria-hidden />
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#0d0f11]/50" aria-hidden />
-              <img
-                src={showcaseData.image}
-                alt={showcaseData.alt}
-                className="relative z-10 w-full max-w-xs object-contain drop-shadow-[0_0_40px_rgba(200,244,0,0.12)] hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ─── 5. RONALDO × IOD — THE GOAT COLLECTION ─────────────────────── */}
-        <section id="designs" aria-label="Ronaldo x IOD GOAT Collection" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
+        {/* ─── 4. FEATURED DESIGNS ──────────────────────────────────── */}
+        <section id="showcase" aria-label="Featured Designs" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div>
-              <div className="inline-flex items-center gap-2 border border-[#ff56ed]/40 text-[#ff56ed] px-4 py-1 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-4">
-                <span className="material-symbols-outlined text-sm">star</span>
-                {collabData.badge}
+              <div className="inline-flex items-center gap-2 border border-[#c8f400]/40 text-[#c8f400] px-4 py-1 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-4">
+                <span className="material-symbols-outlined text-sm">bolt</span>
+                LATEST DROPS
               </div>
               <h2 className="font-headline font-black text-5xl sm:text-6xl leading-none tracking-tighter text-[#e8ecef]">
-                {collabData.artist}
+                FEATURED
                 <br />
-                <span className="text-[#ff56ed] glow-pink">{collabData.title}</span>{" "}
-                <span className="text-[#e8ecef]">{collabData.subtitle}</span>
+                <span className="text-[#c8f400] glow-lime">DESIGNS</span>
               </h2>
             </div>
             <p className="text-[#8d9ba8] text-sm max-w-xs leading-relaxed">
-              {collabData.description}
+              Die neuesten Sleeves für den Betonurwald und Dirtracks. Kein Klotz, nur Flow.
             </p>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {collabData.designs.map((design, i) => {
+            {/* Show a few featured products here from collabData and showcaseData */}
+            {[
+              {
+                id: "monster-track",
+                name: "MONSTER TRACK",
+                description: "Neon-Lime + Graffiti-Silhouette.",
+                badge: "NEW DROP",
+                badgeColor: "primary",
+                image: showcaseData.image,
+                price: "39.00 CHF",
+              },
+              ...collabData.designs.slice(0, 3).map(d => ({...d, price: "39.00 CHF"}))
+            ].map((design, i) => {
               const badgeColors: Record<string, string> = {
                 primary:  "bg-[#c8f400] text-[#1a2000]",
                 secondary: "bg-[#00c8f0] text-[#001f29]",
@@ -239,26 +157,79 @@ export default function Home() {
               };
               return (
                 <div key={design.id} id={`collab-${design.id}`} className={`group cursor-pointer ${i % 2 !== 0 ? "mt-6 sm:mt-10" : ""}`}>
-                  <div className="relative bg-[#161a1e] rounded-xl overflow-hidden aspect-square mb-3 flex items-center justify-center p-6 border border-white/[0.05] hover:border-[#ff56ed]/30 transition-all duration-300">
+                  <div className="relative bg-[#161a1e] rounded-xl overflow-hidden aspect-square mb-3 flex items-center justify-center p-6 border border-white/[0.05] hover:border-[#c8f400]/30 transition-all duration-300">
                     <div className="absolute inset-0 asphalt-texture opacity-5" aria-hidden />
                     <img src={design.image} alt={design.name} className="relative z-10 w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
                     <div className={`absolute top-3 right-3 z-20 px-2.5 py-0.5 rounded-full text-[10px] font-headline font-black uppercase tracking-widest ${badgeColors[design.badgeColor] ?? badgeColors.primary}`}>
                       {design.badge}
                     </div>
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[#ff56ed]/10 to-transparent" aria-hidden />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-[#c8f400]/10 to-transparent" aria-hidden />
                   </div>
                   <h3 className="font-headline text-sm font-black uppercase tracking-widest text-[#e8ecef]">{design.name}</h3>
                   <p className="text-[#8d9ba8] text-xs leading-relaxed mt-1">{design.description}</p>
-                  <p className="text-[#c8f400] font-headline font-black text-sm mt-2">39,99 €</p>
+                  <p className="text-[#c8f400] font-headline font-black text-sm mt-2">{design.price}</p>
                 </div>
               );
             })}
           </div>
 
-          <div className="mt-10 flex justify-center">
-            <button id="collabs-view-all" className="btn-kinetic-ghost px-12 py-4 text-sm">
-              ALLE GOAT-DESIGNS ANSEHEN
-            </button>
+          <div className="mt-16 flex justify-center">
+            <a href="/shop" id="collabs-view-all" className="btn-kinetic-ghost px-12 py-4 text-sm inline-block">
+              ALLE DESIGNS IM SHOP ENTDECKEN
+            </a>
+          </div>
+        </section>
+
+        {/* ─── 5. SIZES GUIDE ──────────────────────────────────────────────── */}
+        <section id="sizes" aria-label="Grössen Guide" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
+          <div className="mb-12 text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 border border-[#c8f400]/40 text-[#c8f400] px-4 py-1 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-4">
+              <span className="material-symbols-outlined text-sm">straighten</span>
+              {sizesData.eyebrow}
+            </div>
+            <h2 className="font-headline font-black text-5xl sm:text-6xl text-[#e8ecef] leading-tight tracking-tighter mb-6 whitespace-pre-line">
+              {sizesData.title}
+            </h2>
+            <p className="text-[#8d9ba8] text-lg leading-relaxed">
+              {sizesData.description}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {sizesData.categories.map((category) => {
+              const themeColors: Record<string, { border: string, text: string, bg: string, glow: string }> = {
+                primary: { border: "group-hover:border-[#c8f400]/50", text: "text-[#c8f400]", bg: "from-[#c8f400]/10", glow: "glow-lime" },
+                secondary: { border: "group-hover:border-[#00c8f0]/50", text: "text-[#00c8f0]", bg: "from-[#00c8f0]/10", glow: "glow-cyan" },
+                tertiary: { border: "group-hover:border-[#ff56ed]/50", text: "text-[#ff56ed]", bg: "from-[#ff56ed]/10", glow: "glow-pink" },
+              };
+              const theme = themeColors[category.color] || themeColors.primary;
+
+              return (
+                <div key={category.id} className={`group relative bg-[#161a1e] rounded-xl overflow-hidden p-6 sm:p-8 border border-white/[0.05] ${theme.border} transition-all duration-300 min-h-[300px] flex flex-col justify-end`}>
+                  {/* Huge Background Text (Watermark) */}
+                  <div className="absolute top-4 left-4 right-4 text-7xl md:text-8xl font-headline font-black text-white/[0.02] tracking-tighter leading-none select-none pointer-events-none break-words">
+                    {category.age}
+                  </div>
+                  
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t ${theme.bg} to-transparent mix-blend-screen pointer-events-none`} aria-hidden />
+                  
+                  <div className="relative z-10">
+                    <span className={`material-symbols-outlined text-4xl sm:text-5xl ${theme.text} mb-4 block group-hover:scale-110 group-hover:-translate-y-1 transition-transform duration-300`}>
+                      {category.icon}
+                    </span>
+                    <h3 className={`font-headline text-2xl font-black uppercase tracking-tighter text-[#e8ecef] mb-1 ${theme.text} group-hover:${theme.glow} transition-all`}>
+                      {category.title}
+                    </h3>
+                    <p className="font-headline text-xs font-black uppercase tracking-widest text-[#8d9ba8] mb-3">
+                      Alter: {category.age}
+                    </p>
+                    <p className="text-[#8d9ba8] text-sm leading-relaxed group-hover:text-white transition-colors">
+                      {category.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
@@ -390,82 +361,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* ─── 10. FOOTER ──────────────────────────────────────────────────── */}
-      <footer className="w-full px-6 sm:px-10 py-12 bg-[#0d0f11] border-t border-white/[0.05] rounded-t-[3rem] mt-4">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col items-center md:items-start gap-1">
-            <div className="mb-2">
-              <img src="/logo-iod.png" alt="IOD Logo" className="h-16 w-auto object-contain" />
-            </div>
-            <p className="font-headline text-xs font-medium tracking-tight text-[#3e4c58]">
-              © 2024 Inside Out Design — 100% Textile. 0% Plastik.
-            </p>
-          </div>
 
-          <div className="flex flex-col items-center gap-6">
-            {/* Social Icons */}
-            <div className="flex items-center gap-4">
-              <a href="https://www.instagram.com/iod_yourshop" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#8d9ba8] hover:text-[#ff56ed] hover:border-[#ff56ed]/30 hover:bg-[#ff56ed]/10 transition-all duration-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-              </a>
-              <a href="https://tiktok.com/@iod" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="p-2.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#8d9ba8] hover:text-[#00c8f0] hover:border-[#00c8f0]/30 hover:bg-[#00c8f0]/10 transition-all duration-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.05a8.3 8.3 0 0 0 4.76 1.49V7.1a4.83 4.83 0 0 1-1-.41z"/></svg>
-              </a>
-              <a href="https://youtube.com/@iod" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="p-2.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#8d9ba8] hover:text-[#c8f400] hover:border-[#c8f400]/30 hover:bg-[#c8f400]/10 transition-all duration-300">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.56 31.56 0 0 0 0 12a31.56 31.56 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.84.55 9.38.55 9.38.55s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.56 31.56 0 0 0 24 12a31.56 31.56 0 0 0-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
-              </a>
-            </div>
-            {/* Legal Links */}
-            <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2" aria-label="Footer Links">
-              {[
-                { label: "Sizing Guide", href: "#sizes" },
-                { label: "Datenschutz", href: "#" },
-                { label: "AGB", href: "#" },
-                { label: "Versand & Rueckgabe", href: "#" },
-              ].map((link) => (
-                <a key={link.label} href={link.href} className="font-headline text-xs font-medium tracking-widest uppercase text-[#3e4c58] hover:text-[#c8f400] transition-colors duration-200">
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <div className="font-headline font-black text-xl text-[#ff56ed] rotate-2 glow-pink select-none">
-            GO FAST.
-          </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto mt-6 pt-6 border-t border-white/[0.04] text-center">
-          <p className="text-[#3e4c58] text-xs leading-relaxed">
-            Alle Preise inkl. MwSt., zzgl.{" "}
-            <a href="#" className="underline hover:text-[#8d9ba8]">Versandkosten</a>.
-            {" "}Widerrufsrecht: 14 Tage nach Erhalt der Ware.
-          </p>
-        </div>
-      </footer>
-
-      {/* ─── 11. MOBILE BOTTOM NAV ──────────────────────────────────────── */}
-      <nav aria-label="Mobile Navigation" className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0d0f11]/95 backdrop-blur-xl border-t border-white/[0.06] flex justify-around items-center py-3 px-4">
-        {[
-          { icon: "home", label: "Home", href: "#hero", active: true },
-          { icon: "storefront", label: "Shop", href: "#shop", active: false },
-          { icon: "star", label: "GOAT", href: "#designs", active: false },
-          { icon: "auto_stories", label: "Story", href: "#story", active: false },
-          { icon: "help_outline", label: "FAQ", href: "#faq", active: false },
-        ].map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            id={`mobile-nav-${item.label.toLowerCase()}`}
-            className={`flex flex-col items-center gap-0.5 ${item.active ? "text-[#c8f400]" : "text-[#3e4c58] hover:text-[#8d9ba8]"} transition-colors`}
-          >
-            <span className="material-symbols-outlined text-xl" style={item.active ? { fontVariationSettings: "'FILL' 1" } : {}}>
-              {item.icon}
-            </span>
-            <span className="text-[9px] font-headline font-black uppercase tracking-widest">{item.label}</span>
-          </a>
-        ))}
-      </nav>
     </>
   );
 }
