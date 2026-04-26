@@ -184,6 +184,11 @@ export const uspData = {
       title: "Made in Switzerland",
       description: "Qualitaet, die man spuert. Produziert nach Schweizer Standards.",
     },
+    {
+      icon: "eco",
+      title: "0% Plastik",
+      description: "100% Textil. Wir setzen auf nachhaltige Materialien und lokale Prozesse.",
+    },
   ],
 };
 
