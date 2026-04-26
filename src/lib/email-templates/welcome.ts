@@ -29,7 +29,7 @@ export function buildWelcomeEmail(email: string): string {
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: #1a1c18;
+      background-color: #0a0a0a;
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       color: #e2e8d8;
       -webkit-text-size-adjust: 100%;
@@ -38,54 +38,31 @@ export function buildWelcomeEmail(email: string): string {
 
     .email-wrapper {
       width: 100%;
-      background-color: #1a1c18;
+      background-color: #0a0a0a;
       padding: 40px 16px;
     }
 
     .email-card {
       max-width: 600px;
       margin: 0 auto;
-      background-color: #21241e;
+      background-color: #121212;
       border-radius: 32px;
       overflow: hidden;
+      border: 1px solid #1f1f1f;
     }
 
     /* ── Hero ─────────────────────────────────────────── */
     .hero {
-      background: linear-gradient(135deg, #1a2400 0%, #1e2b00 40%, #243200 100%);
+      background-color: #000000;
       padding: 56px 48px 48px;
       text-align: left;
       position: relative;
-      overflow: hidden;
     }
 
-    .hero::before {
-      content: 'IOD';
-      position: absolute;
-      top: -10px;
-      right: -20px;
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      font-size: 160px;
-      font-weight: 700;
-      color: #a3fe00;
-      opacity: 0.05;
-      letter-spacing: -6px;
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .brand-pill {
-      display: inline-block;
-      background-color: #a3fe00;
-      color: #0f1800;
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      margin-bottom: 28px;
+    .brand-logo {
+      display: block;
+      height: 32px;
+      margin-bottom: 32px;
     }
 
     .hero-headline {
@@ -105,7 +82,7 @@ export function buildWelcomeEmail(email: string): string {
     .hero-subline {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 16px;
-      color: #a3b89a;
+      color: #a0a0a0;
       line-height: 1.6;
       max-width: 420px;
     }
@@ -119,7 +96,7 @@ export function buildWelcomeEmail(email: string): string {
       font-family: 'Space Grotesk', Arial, sans-serif;
       font-size: 22px;
       font-weight: 700;
-      color: #e8f5d0;
+      color: #ffffff;
       margin-bottom: 16px;
       letter-spacing: -0.5px;
     }
@@ -127,7 +104,7 @@ export function buildWelcomeEmail(email: string): string {
     .body-text {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 15px;
-      color: #9aab8e;
+      color: #a0a0a0;
       line-height: 1.75;
       margin-bottom: 32px;
     }
@@ -155,13 +132,16 @@ export function buildWelcomeEmail(email: string): string {
     .promise-icon {
       width: 44px;
       height: 44px;
-      background-color: #0f1800;
       border-radius: 14px;
       display: inline-block;
       text-align: center;
       line-height: 44px;
       font-size: 20px;
     }
+    
+    .icon-blue { background-color: #00647a; }
+    .icon-clay { background-color: #a63400; }
+    .icon-green { background-color: #3f6600; }
 
     .promise-text-cell {
       display: table-cell;
@@ -174,7 +154,7 @@ export function buildWelcomeEmail(email: string): string {
       font-family: 'Space Grotesk', Arial, sans-serif;
       font-size: 14px;
       font-weight: 700;
-      color: #e8f5d0;
+      color: #ffffff;
       letter-spacing: 0.3px;
       margin-bottom: 4px;
     }
@@ -182,17 +162,19 @@ export function buildWelcomeEmail(email: string): string {
     .promise-desc {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 13px;
-      color: #7a8a6e;
+      color: #888888;
       line-height: 1.6;
     }
 
     /* ── CTA Block ────────────────────────────────────── */
     .cta-block {
-      background: linear-gradient(135deg, #0f1800 0%, #162100 100%);
+      background-color: #000000;
       border-radius: 24px;
       padding: 36px 40px;
       text-align: center;
       margin-bottom: 40px;
+      border: 1px solid #1a1a1a;
+      box-shadow: 0 0 30px rgba(0, 100, 122, 0.15);
     }
 
     .cta-label {
@@ -217,7 +199,7 @@ export function buildWelcomeEmail(email: string): string {
     .cta-sub {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 14px;
-      color: #7a8a6e;
+      color: #888888;
       margin-bottom: 28px;
       line-height: 1.6;
     }
@@ -225,7 +207,7 @@ export function buildWelcomeEmail(email: string): string {
     .cta-button {
       display: inline-block;
       background: linear-gradient(135deg, #a3fe00 0%, #8cd900 100%);
-      color: #0f1800;
+      color: #000000;
       font-family: 'Space Grotesk', Arial, sans-serif;
       font-size: 14px;
       font-weight: 700;
@@ -237,7 +219,7 @@ export function buildWelcomeEmail(email: string): string {
 
     /* ── Signature ────────────────────────────────────── */
     .signature {
-      border-top: 1px solid #2a2f24;
+      border-top: 1px solid #222222;
       padding-top: 32px;
       margin-top: 8px;
     }
@@ -245,7 +227,7 @@ export function buildWelcomeEmail(email: string): string {
     .signature-text {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 14px;
-      color: #7a8a6e;
+      color: #888888;
       line-height: 1.7;
     }
 
@@ -253,38 +235,36 @@ export function buildWelcomeEmail(email: string): string {
       font-family: 'Space Grotesk', Arial, sans-serif;
       font-size: 16px;
       font-weight: 700;
-      color: #c8dab8;
+      color: #e0e0e0;
       margin-top: 12px;
     }
 
     .signature-role {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 12px;
-      color: #5a6a50;
+      color: #666666;
       margin-top: 2px;
     }
 
     /* ── Footer ───────────────────────────────────────── */
     .email-footer {
-      background-color: #161810;
+      background-color: #050505;
       border-radius: 0 0 32px 32px;
       padding: 28px 48px;
       text-align: center;
+      border-top: 1px solid #1f1f1f;
     }
 
-    .footer-brand {
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #a3fe00;
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
+    .footer-logo {
+      display: inline-block;
+      height: 20px;
+      margin-bottom: 12px;
     }
 
     .footer-tagline {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 11px;
-      color: #3a4830;
+      color: #444444;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 20px;
@@ -293,12 +273,12 @@ export function buildWelcomeEmail(email: string): string {
     .footer-legal {
       font-family: 'Plus Jakarta Sans', Arial, sans-serif;
       font-size: 11px;
-      color: #3a4830;
+      color: #444444;
       line-height: 1.7;
     }
 
     .footer-legal a {
-      color: #5a6a50;
+      color: #666666;
       text-decoration: none;
     }
 
@@ -318,7 +298,7 @@ export function buildWelcomeEmail(email: string): string {
 
       <!-- ── HERO ── -->
       <div class="hero">
-        <div class="brand-pill">Inside Out Design</div>
+        <img src="https://www.iod-shop.com/logo-iod.png" alt="IOD Logo" class="brand-logo" />
         <h1 class="hero-headline">
           Du bist dabei.<br />
           <span class="accent">Wir auch.</span>
@@ -334,7 +314,7 @@ export function buildWelcomeEmail(email: string): string {
       <div class="content">
         <p class="greeting">Hey, wir freuen uns mega! 🎉</p>
         <p class="body-text">
-          Deine E-Mail-Adresse (<strong style="color:#c8dab8;">${email}</strong>) ist jetzt in
+          Deine E-Mail-Adresse (<strong style="color:#ffffff;">${email}</strong>) ist jetzt in
           unserem Launch-Radar. Sobald der Shop live geht, bist du die Erste / der Erste, der
           es erfährt – mit exklusivem Early-Bird-Zugang und allem, was dazugehört.
         </p>
@@ -343,7 +323,7 @@ export function buildWelcomeEmail(email: string): string {
         <table class="promise-grid" role="presentation" cellspacing="0" cellpadding="0">
           <tr class="promise-item">
             <td class="promise-icon-cell">
-              <span class="promise-icon">⚡</span>
+              <span class="promise-icon icon-blue">⚡</span>
             </td>
             <td class="promise-text-cell">
               <div class="promise-title">Early-Bird-Zugang</div>
@@ -352,7 +332,7 @@ export function buildWelcomeEmail(email: string): string {
           </tr>
           <tr class="promise-item">
             <td class="promise-icon-cell">
-              <span class="promise-icon">🛡️</span>
+              <span class="promise-icon icon-clay">🛡️</span>
             </td>
             <td class="promise-text-cell">
               <div class="promise-title">Kein Spam – versprochen</div>
@@ -361,7 +341,7 @@ export function buildWelcomeEmail(email: string): string {
           </tr>
           <tr class="promise-item">
             <td class="promise-icon-cell">
-              <span class="promise-icon">🌿</span>
+              <span class="promise-icon icon-green">🌿</span>
             </td>
             <td class="promise-text-cell">
               <div class="promise-title">Nachhaltig &amp; made to last</div>
@@ -377,7 +357,7 @@ export function buildWelcomeEmail(email: string): string {
           <div class="cta-sub">
             Schau schon mal rein – die Produkte warten auf deinen ersten Blick.
           </div>
-          <a class="cta-button" href="https://iod-pads.vercel.app" target="_blank" rel="noopener noreferrer">
+          <a class="cta-button" href="https://www.iod-shop.com" target="_blank" rel="noopener noreferrer">
             Zur Webseite →
           </a>
         </div>
@@ -394,12 +374,12 @@ export function buildWelcomeEmail(email: string): string {
 
       <!-- ── FOOTER ── -->
       <div class="email-footer">
-        <div class="footer-brand">IOD</div>
+        <img src="https://www.iod-shop.com/logo-iod.png" alt="IOD Logo" class="footer-logo" />
         <div class="footer-tagline">Inside Out Design · Pumptrack Pads</div>
         <p class="footer-legal">
           Du erhältst diese E-Mail, weil du dich für unsere Launch-Benachrichtigung angemeldet hast.<br />
           Keine weiteren E-Mails erwünscht?
-          <a href="https://iod-pads.vercel.app/unsubscribe">Hier abmelden.</a><br /><br />
+          <a href="https://www.iod-shop.com/unsubscribe">Hier abmelden.</a><br /><br />
           © ${new Date().getFullYear()} Inside Out Design GmbH · DACH Region
         </p>
       </div>
