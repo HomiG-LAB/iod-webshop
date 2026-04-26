@@ -24,6 +24,12 @@ export const teamMemberType = defineType({
       },
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      description: 'A short bio or role description',
+    }),
+    defineField({
       name: 'order',
       title: 'Order',
       type: 'number',

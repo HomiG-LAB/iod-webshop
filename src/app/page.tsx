@@ -177,7 +177,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {productsData.slice(0, 4).map((design, i) => {
+            {productsData.slice(0, 4).map((design: any, i: number) => {
               const badgeColors: Record<string, string> = {
                 primary:  "bg-[#c8f400] text-[#1a2000]",
                 secondary: "bg-[#00c8f0] text-[#001f29]",
