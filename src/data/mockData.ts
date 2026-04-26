@@ -19,7 +19,7 @@ export const heroData = {
   tagline: "KEIN POLSTER. NUR FLOW.",
   headlineLine1: "Second skin.",
   headlineLine2: "But with a statement.",
-  subTagline: "Der Ellbogenschuetzer, der sich anfuehlt wie nichts — und trotzdem alles sagt. Hauchduenn, elastisch, komplett bedruckbar. Fuer alle, die auf dem Pumptrack ihre eigene Linie fahren.",
+  subTagline: "Der Ellbogenschützer, der sich anfühlt wie nichts — und trotzdem alles sagt. Hauchdünn, elastisch, komplett bedruckbar. Für alle, die auf dem Pumptrack ihre eigene Linie fahren.",
   cta1: "JETZT BESTELLEN",
   cta2: "MEHR ERFAHREN",
   image:
@@ -163,7 +163,7 @@ export const uspData = {
   eyebrow: "WARUM IOD",
   title: "Kein Klotz.\nKein Kompromiss.",
   description:
-    "Das IOD sitzt so nah am Arm, dass du vergisst, dass du ueberhaupt Schutz traegst. Keine Polster, kein Klotz -- ein hauchduenner Sleeve mit integriertem Ellbogenpad und deinem Design drauf. Fuer alle ab Kids- bis Erwachsenengroesse.",
+    "Das IOD sitzt so nah am Arm, dass du vergisst, dass du überhaupt Schutz trägst. Keine Polster, kein Klotz -- ein hauchdünner Sleeve mit integriertem Ellbogenpad und deinem Design drauf. Für alle ab Kids- bis Erwachsenengrösse.",
   points: [
     {
       icon: "all_out",
@@ -173,17 +173,17 @@ export const uspData = {
     {
       icon: "palette",
       title: "Full-Print Sublimation",
-      description: "Keine Farbbeschraenkung, kein Verblassen. Dein Design in maximaler Schaerfe.",
+      description: "Keine Farbbeschränkung, kein Verblassen. Dein Design in maximaler Schärfe.",
     },
     {
       icon: "shield",
-      title: "Ultradunner Ellbogenpad",
-      description: "Flach anliegend, exakt wo es zaehlt. Schutz ohne Volumen.",
+      title: "Ultradünner Ellbogenpad",
+      description: "Flach anliegend, exakt wo es zählt. Schutz ohne Volumen.",
     },
     {
       icon: "public",
       title: "Made in Switzerland",
-      description: "Qualitaet, die man spuert. Produziert nach Schweizer Standards.",
+      description: "Qualität, die man spürt. Produziert nach Schweizer Standards.",
     },
     {
       icon: "eco",
@@ -197,23 +197,23 @@ export const uspData = {
 export const storyData = {
   eyebrow: "UNSERE STORY",
   title: "Ein Startup.\nEine Familie.\nEin Ziel.",
-  body: "Wir haben IOD gegruendet, weil wir glauben: Unternehmertum lernt man nicht aus Buechern -- sondern indem man einfach anfaengt. Der Gewinn geht in Bildung. Das Produkt kommt aus der Schweiz.",
-  ctaLabel: "MEHR UEBER UNS",
+  body: "Wir haben IOD gegründet, weil wir glauben: Unternehmertum lernt man nicht aus Büchern -- sondern indem man einfach anfängt. Der Gewinn geht in Bildung. Das Produkt kommt aus der Schweiz.",
+  ctaLabel: "MEHR ÜBER UNS",
 };
 
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 export const faqData = [
   {
-    q: "Fuer wen sind die IOD Sleeves geeignet?",
-    a: "Fuer alle! Wir haben Groessen ab Kids bis Erwachsene. Schau dir unsere Groessentabelle an -- und falls du unsicher bist, empfehlen wir eine Groesse groesser.",
+    q: "Für wen sind die IOD Sleeves geeignet?",
+    a: "Für alle! Wir haben Grössen ab Kids bis Erwachsene. Schau dir unsere Grössentabelle an -- und falls du unsicher bist, empfehlen wir eine Grösse grösser.",
   },
   {
-    q: "Was unterscheidet IOD von normalen Ellbogenschuetzern?",
-    a: "Kein Plastik, kein Klettverschluss, kein Bulk. Unser Sleeve sitzt wie eine zweite Haut, schuetzt durch High-Tech-Fasern und sieht dabei besser aus als alles andere auf dem Track.",
+    q: "Was unterscheidet IOD von normalen Ellbogenschützern?",
+    a: "Kein Plastik, kein Klettverschluss, kein Bulk. Unser Sleeve sitzt wie eine zweite Haut, schützt durch High-Tech-Fasern und sieht dabei besser aus als alles andere auf dem Track.",
   },
   {
     q: "Kann ich ein eigenes Design drucken lassen?",
-    a: "Ja! Full-Print Sublimation bedeutet: keine Farbbeschraenkung, kein Verblassen. Kontaktier uns fuer Custom Orders.",
+    a: "Ja! Full-Print Sublimation bedeutet: keine Farbbeschränkung, kein Verblassen. Kontaktier uns für Custom Orders.",
   },
   {
     q: "Wie wasche ich die Sleeves?",
@@ -221,7 +221,7 @@ export const faqData = [
   },
   {
     q: "Wohin geht der Gewinn?",
-    a: "In Bildung. Wir sind ein Startup mit Mission -- ein Teil des Gewinns fliesst direkt in Lernprojekte fuer junge Menschen.",
+    a: "In Bildung. Wir sind ein Startup mit Mission -- ein Teil des Gewinns fliesst direkt in Lernprojekte für junge Menschen.",
   },
 ];
 
