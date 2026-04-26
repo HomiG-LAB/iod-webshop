@@ -391,63 +391,63 @@ export const teamData = {
       name: "Katja",
       role: "Entrepreneurship Coach & Strategic Lead",
       description: "Verbindet strategisches Denken mit praktischer Umsetzung und begleitet das Team dabei, Ideen in echte Projekte zu verwandeln. Im Mittelpunkt steht nicht nur das Projekt selbst, sondern auch das Lernen: Unternehmertum verstehen, ausprobieren und entwickeln.",
-      image: "/team/katja-styled.png"
+      image: "/team_katja.png"
     },
     {
       id: "homero",
       name: "Homero",
       role: "Systems Architect aka “Tech Whisperer”",
       description: "Als echter Techie und Halb-Nerd lebt diese Rolle irgendwo zwischen Code, Logik und dem festen Glauben, dass „man das noch eleganter lösen kann“. Wenn es technisch wird, ist er entweder schon dran oder hat es schon längst verbessert.",
-      image: "/team/homero-styled.png"
+      image: "/team_homero.png"
     },
     {
       id: "amaro",
       name: "Amaro",
       role: "Experimentation & Development Lead",
       description: "Bringt neue Ideen in die Praxis und testet sie strukturiert, kritisch und mit einem klaren Blick für Verbesserung. Hinterfragt Ansätze, entwickelt sie weiter und sorgt dafür, dass aus Konzepten funktionierende Lösungen werden. Als Chemie- und Sportenthusiast verbindet diese Rolle analytisches Denken aus dem Labor mit Ausdauer, Disziplin und Leistungsorientierung aus dem Sport.",
-      image: "/team/amaro-styled.png"
+      image: "/team_amaro.png"
     },
     {
       id: "ciara",
       name: "Ciara",
       role: "Content & Social Media Lead",
       description: "Verantwortlich für die Erstellung von Content und die Pflege unserer Social-Media-Kanäle. Entwickelt kreative Inhalte, erzählt unsere Geschichte nach außen und sorgt dafür, dass unsere Marke online sichtbar, konsistent und nahbar bleibt.",
-      image: "/team/ciara-styled.png"
+      image: "/team_ciara.png"
     },
     {
       id: "jonah",
       name: "Jonah",
       role: "Sales & Growth Lead",
       description: "Verantwortlich für den Aufbau von Kundenbeziehungen und die Weiterentwicklung unseres Vertriebs. Fokussiert auf Wachstum durch echte Verbindung: versteht Bedürfnisse, übersetzt sie in Lösungen und bringt Angebote gezielt an die richtigen Menschen.",
-      image: "/team/jonah-styled.png"
+      image: "/team_jonah.png"
     },
     {
       id: "amy",
       name: "Amy",
       role: "Lead Product Tester & Experience Manager",
       description: "Testet alles, bevor es jemand anderes tut – kritisch, ehrlich und mit Blick fürs Detail. Sorgt dafür, dass unsere Produkte nicht nur funktionieren, sondern begeistern.",
-      image: "/team/amy-styled.png"
+      image: "/team_amy.png"
     },
     {
       id: "liv",
       name: "Liv",
       role: "Brand Lead & Community Magic",
       description: "Verantwortlich für die Aussenwirkung unserer Marke sowie den Aufbau und die Pflege unserer Community.",
-      image: "/team/liv-styled.png"
+      image: "/team_liv.png"
     },
     {
       id: "amigo",
       name: "Amigo",
       role: "Chief Security Officer",
       description: "Verantwortlich für Sicherheit, Alarmbereitschaft. Erkennt Gefahren frühzeitig und sorgt für regelmässige Bewegungspausen im Team.",
-      image: "/team/amigo-styled.png"
+      image: "/team_amigo.png"
     },
     {
       id: "mrs-curry",
       name: "Mrs. Curry",
       role: "Chief Mental Health Officer",
       description: "Expertin für Entschleunigung und emotionale Balance. Erinnerte das Team daran, Pausen einzulegen, Prioritäten zu hinterfragen und das Leben nicht zu ernst zu nehmen.",
-      image: "/team/curry-styled.png"
+      image: "/team_mrs_curry.png"
     }
   ]
 };

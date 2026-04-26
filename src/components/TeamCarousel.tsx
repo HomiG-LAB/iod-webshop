@@ -27,12 +27,20 @@ export default function TeamCarousel() {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
+        const { teamData } = await import("../data/mockData");
         const data = await client.fetch(`*[_type == "teamMember"] | order(order asc)`);
         if (data && data.length > 0) {
-          setTeamMembers(data);
+          // fallback to mock images if sanity image is missing
+          const enrichedData = data.map((member: any) => {
+            if (!member.image) {
+              const match = teamData.members.find((m: any) => m.name.toLowerCase() === member.name.toLowerCase());
+              if (match) member.image = match.image;
+            }
+            return member;
+          });
+          setTeamMembers(enrichedData);
         } else {
           // Fallback to mock data if Sanity is empty
-          const { teamData } = await import("../data/mockData");
           // @ts-ignore
           setTeamMembers(teamData.members);
         }

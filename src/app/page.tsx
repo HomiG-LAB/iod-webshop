@@ -19,6 +19,7 @@ import { urlFor } from "../sanity/image";
 import TeamCarousel from "../components/TeamCarousel";
 // -----------------------------------------------------------------------------
 // IOD Webshop Homepage — Skin: "Kinetic Asphalt"
+export const revalidate = 0; // Disable caching so Sanity updates are immediately visible
 // Page structure (from user brief + Stitch screens):
 //   1. TopNav (Shop | Designs | Grössen | Story)
 //   2. Hero — "Second skin. But with a statement."
@@ -40,11 +41,13 @@ export default async function Home() {
     price,
     badge,
     badgeType,
-    description
+    description,
+    image
   }`);
 
   const productsData = sanityProductsRaw.map((sp: any) => {
-    const match = mockProductsData.find(m => m.id === sp.id);
+    // using loose comparison string vs number, or match by string
+    const match = mockProductsData.find(m => String(m.id) === sp.id || sp.id.includes(m.name.toLowerCase().replace(/ /g, '-')));
     return {
       id: sp.id,
       name: sp.name,
