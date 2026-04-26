@@ -211,6 +211,47 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* --- 4.5 ACTION LOOKBOOK — "Der pure Flow" ------------------------- */}
+        <section id="flow" aria-label="IOD Action Lookbook" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-[#00c8f0]/10 border border-[#00c8f0]/20 text-[#00c8f0] px-4 py-1.5 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-5">
+              <span className="material-symbols-outlined text-sm">photo_camera</span>
+              {lookbook.badge}
+            </div>
+            <h2 className="font-headline font-black text-5xl sm:text-6xl tracking-tighter text-[#e8ecef] leading-none mb-4">
+              {lookbook.title}
+            </h2>
+            <p className="text-[#8d9ba8] text-sm max-w-md mx-auto leading-relaxed">
+              {lookbook.description}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {lookbook.shots?.map((shot: any, i: number) => (
+              <div
+                key={shot.id || i}
+                id={`lookbook-shot-${shot.id || i}`}
+                className="group relative overflow-hidden rounded-xl cursor-pointer aspect-[4/5]"
+              >
+                <img src={shot.image && typeof shot.image !== 'string' ? urlFor(shot.image).url() : (shot.image || "/lookbook_fallback.png")} alt={shot.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d]/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <span className="inline-block font-headline text-[10px] font-black uppercase tracking-widest text-[#00c8f0] border border-[#00c8f0]/40 px-2.5 py-0.5 rounded-full mb-2">
+                    {shot.tag}
+                  </span>
+                  <p className="font-headline font-bold text-sm text-[#e8ecef]">{shot.caption}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <button id="lookbook-discover" className="btn-kinetic-primary px-10 py-4 text-sm">
+              {lookbook.ctaLabel}
+            </button>
+          </div>
+        </section>
+
         {/* --- 5. SIZES GUIDE ------------------------------------------------ */}
         <section id="sizes" aria-label="Grössen Guide" className="px-4 sm:px-6 max-w-7xl mx-auto mb-32">
           <div className="mb-12 text-center max-w-3xl mx-auto">
@@ -309,46 +350,7 @@ export default async function Home() {
           <TeamCarousel />
         </section>
 
-        {/* --- 7. ACTION LOOKBOOK ------------------------------------------- */}
-        <section id="flow" aria-label="IOD Action Lookbook" className="px-4 sm:px-6 max-w-7xl mx-auto mb-40">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-[#00c8f0]/10 border border-[#00c8f0]/20 text-[#00c8f0] px-4 py-1.5 rounded-full text-xs font-headline font-black uppercase tracking-widest mb-5">
-              <span className="material-symbols-outlined text-sm">photo_camera</span>
-              {lookbook.badge}
-            </div>
-            <h2 className="font-headline font-black text-5xl sm:text-6xl tracking-tighter text-[#e8ecef] leading-none mb-4">
-              {lookbook.title}
-            </h2>
-            <p className="text-[#8d9ba8] text-sm max-w-md mx-auto leading-relaxed">
-              {lookbook.description}
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {lookbook.shots?.map((shot: any, i: number) => (
-              <div
-                key={shot.id || i}
-                id={`lookbook-shot-${shot.id || i}`}
-                className="group relative overflow-hidden rounded-xl cursor-pointer aspect-[4/5]"
-              >
-                <img src={shot.image && typeof shot.image !== 'string' ? urlFor(shot.image).url() : (shot.image || "/lookbook_fallback.png")} alt={shot.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b0d]/90 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute bottom-4 left-4 right-4 z-10">
-                  <span className="inline-block font-headline text-[10px] font-black uppercase tracking-widest text-[#00c8f0] border border-[#00c8f0]/40 px-2.5 py-0.5 rounded-full mb-2">
-                    {shot.tag}
-                  </span>
-                  <p className="font-headline font-bold text-sm text-[#e8ecef]">{shot.caption}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 flex justify-center">
-            <button id="lookbook-discover" className="btn-kinetic-primary px-10 py-4 text-sm">
-              {lookbook.ctaLabel}
-            </button>
-          </div>
-        </section>
 
         {/* --- 8. FAQ ------------------------------------------------------- */}
         <section id="faq" aria-label="FAQ" className="px-4 sm:px-6 max-w-4xl mx-auto mb-40">

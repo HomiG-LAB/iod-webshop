@@ -131,21 +131,21 @@ export const lookbookData = {
   shots: [
     {
       id: 1,
-      image: "/product_monster_track.png",
-      caption: "Urban Camo Edition",
-      tag: "LATEST",
+      image: "/lookbook_action_1.png",
+      caption: "Pumptrack Session — Neon Graffiti Edition",
+      tag: "ACTION",
     },
     {
       id: 2,
-      image: "/product_goat_mask.png",
-      caption: "SUI-VIBE Original",
-      tag: "CLASSIC",
+      image: "/lookbook_action_2.png",
+      caption: "Airtime — Purple Cyan Edition",
+      tag: "IN MOTION",
     },
     {
       id: 3,
-      image: "/product_pro_street.png",
-      caption: "Night Rider Sleeve",
-      tag: "LIMITED",
+      image: "/lookbook_action_3.png",
+      caption: "Banked Turn — Urban Flow Edition",
+      tag: "CLOSE-UP",
     },
   ],
 };
