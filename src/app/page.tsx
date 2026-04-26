@@ -50,7 +50,7 @@ export default function Home() {
 
         <div className="flex items-center gap-2">
           {/* Social Icons */}
-          <a href="https://instagram.com/iod" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hidden sm:flex p-2 text-[#8d9ba8] hover:text-[#ff56ed] transition-colors duration-200 active:scale-90">
+          <a href="https://www.instagram.com/iod_yourshop" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hidden sm:flex p-2 text-[#8d9ba8] hover:text-[#ff56ed] transition-colors duration-200 active:scale-90">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
           <a href="https://tiktok.com/@iod" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="hidden sm:flex p-2 text-[#8d9ba8] hover:text-[#00c8f0] transition-colors duration-200 active:scale-90">
@@ -405,7 +405,7 @@ export default function Home() {
           <div className="flex flex-col items-center gap-6">
             {/* Social Icons */}
             <div className="flex items-center gap-4">
-              <a href="https://instagram.com/iod" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#8d9ba8] hover:text-[#ff56ed] hover:border-[#ff56ed]/30 hover:bg-[#ff56ed]/10 transition-all duration-300">
+              <a href="https://www.instagram.com/iod_yourshop" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="p-2.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#8d9ba8] hover:text-[#ff56ed] hover:border-[#ff56ed]/30 hover:bg-[#ff56ed]/10 transition-all duration-300">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
               <a href="https://tiktok.com/@iod" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="p-2.5 rounded-full bg-white/[0.04] border border-white/[0.06] text-[#8d9ba8] hover:text-[#00c8f0] hover:border-[#00c8f0]/30 hover:bg-[#00c8f0]/10 transition-all duration-300">
