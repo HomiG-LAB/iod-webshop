@@ -7,10 +7,11 @@
 
 // ─── NAVIGATION ──────────────────────────────────────────────────────────────
 export const navLinks = [
-  { label: "Shop", href: "#shop" },
-  { label: "Designs", href: "#showcase" },
-  { label: "Grössen", href: "#sizes" },
-  { label: "Story", href: "#story" },
+  { label: "Home", href: "/" },
+  { label: "Shop", href: "/shop" },
+  { label: "Designs", href: "/#showcase" },
+  { label: "Grössen", href: "/#sizes" },
+  { label: "Story", href: "/#story" },
 ];
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
@@ -62,9 +63,9 @@ export const showcaseData = {
   tagline: "PURE FLOW. NO RULES.",
   description:
     "Der Sleeve, der sich anfühlt wie eine zweite Haut. Designed für den Betonurwald und die Dirtracks, auf denen Legenden geboren werden.",
-  ctaShop: "ADD TO CART — 34,99 €",
+  ctaShop: "ADD TO CART — 39.00 CHF",
   ctaDetails: "ALLE DETAILS",
-  price: "34,99 €",
+  price: "39.00 CHF",
   priceNote: "* inkl. MwSt., zzgl. Versandkosten",
   image:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBme__7JPNhkpmbE7MY40lWOc17gIGXMdjR1iNTczM4MJwXtlg7RkZMct3XqRzodb4uOSOoheXInTYxk4LFaOK21pmF140ENeb1gmnlPQsvmfEzuk_5oWHL8u6ZbdeJEz4K-jVZ2N3gXnROeSQybY6oMJHIoKJdUTFiWPXpsPVw_DpugDHB3T00RefrWb9pdWja82rfs5YWLtzcOJ7MojnEMWl9HSs_4OJ3C8zKhrk1QCYF0Anpu2hzU3rIFs6M2MGY7GekmrYKc9Y",
@@ -165,7 +166,7 @@ export const uspData = {
     "Das IOD sitzt so nah am Arm, dass du vergisst, dass du ueberhaupt Schutz traegst. Keine Polster, kein Klotz -- ein hauchduenner Sleeve mit integriertem Ellbogenpad und deinem Design drauf. Fuer alle ab Kids- bis Erwachsenengroesse.",
   points: [
     {
-      icon: "fingerprint",
+      icon: "all_out",
       title: "Second-Skin Passform",
       description: "4-Way Stretch, bewegt sich mit dir -- kein Einschneiden, kein Verrutschen.",
     },
@@ -245,7 +246,7 @@ export const productsData = [
   {
     id: 1,
     name: "Monster Track",
-    price: "34,99 €",
+    price: "39.00 CHF",
     badge: "TRENDING",
     badgeType: "primary",
     image:
@@ -255,7 +256,7 @@ export const productsData = [
   {
     id: 2,
     name: "CR7 Street",
-    price: "39,99 €",
+    price: "39.00 CHF",
     badge: "5 LEFT",
     badgeType: "tertiary",
     image:
@@ -265,7 +266,7 @@ export const productsData = [
   {
     id: 3,
     name: "GOAT Mask",
-    price: "39,99 €",
+    price: "39.00 CHF",
     badge: "HOT",
     badgeType: "secondary",
     image:
@@ -275,7 +276,7 @@ export const productsData = [
   {
     id: 4,
     name: "Pumptrack Flow",
-    price: "34,99 €",
+    price: "39.00 CHF",
     badge: null,
     badgeType: "primary",
     image:
