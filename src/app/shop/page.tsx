@@ -32,29 +32,12 @@ const SIZES = sizesData.categories.map((c) => ({
   age: c.age,
 }));
 
-// ─── PRODUCT CARD ─────────────────────────────────────────────────────────────
-function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: (item: CartItem) => void }) {
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
-  const [qty, setQty] = useState(1);
-  const [added, setAdded] = useState(false);
-
+// ─── PRODUCT CARD (COMING SOON) ───────────────────────────────────────────────
+function ProductCard({ product }: { product: Product }) {
   const badgeColors: Record<string, string> = {
     primary: "bg-[#c8f400] text-[#1a2000]",
     secondary: "bg-[#00c8f0] text-[#001f29]",
     tertiary: "bg-[#ff56ed] text-[#2d0029]",
-  };
-
-  const handleAdd = () => {
-    if (!selectedSize) return;
-    const sizeObj = SIZES.find(s => s.id === selectedSize);
-    onAddToCart({
-      product,
-      size: selectedSize,
-      sizeLabel: sizeObj ? `${sizeObj.label} (${sizeObj.age})` : selectedSize,
-      qty,
-    });
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
@@ -62,11 +45,22 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
       {/* Image */}
       <div className="relative aspect-square bg-[#161a1e] overflow-hidden">
         <div className="absolute inset-0 asphalt-texture opacity-5" aria-hidden />
+        {/* Coming Soon Overlay */}
+        <div className="absolute inset-0 z-30 bg-[#0a0b0d]/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className="font-headline font-black text-xl uppercase tracking-widest text-[#c8f400] bg-[#0a0b0d]/80 px-6 py-3 rounded-full border border-[#c8f400]/30 backdrop-blur-sm">
+            COMING SOON
+          </span>
+        </div>
         {product.badge && (
           <div className={`absolute top-4 right-4 z-20 px-3 py-1 rounded-full text-[10px] font-headline font-black uppercase tracking-widest ${badgeColors[product.badgeType] || badgeColors.primary}`}>
             {product.badge}
           </div>
         )}
+        {/* Coming Soon corner ribbon */}
+        <div className="absolute top-4 left-4 z-20 px-3 py-1 rounded-full text-[10px] font-headline font-black uppercase tracking-widest bg-[#ff56ed]/90 text-white backdrop-blur-sm flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+          BALD DA
+        </div>
         <img
           src={product.image}
           alt={product.name}
@@ -75,7 +69,7 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
       </div>
 
       {/* Details */}
-      <div className="p-5 flex flex-col flex-1 gap-4">
+      <div className="p-5 flex flex-col flex-1 gap-3">
         <div>
           <h3 className="font-headline font-black uppercase tracking-widest text-base text-[#e8ecef]">
             {product.name}
@@ -85,76 +79,15 @@ function ProductCard({ product, onAddToCart }: { product: Product; onAddToCart: 
           </p>
         </div>
 
-        {/* Size Selector */}
-        <div>
-          <p className="font-headline text-[10px] font-black uppercase tracking-widest text-[#8d9ba8] mb-2 flex items-center gap-1.5">
-            <span className="material-symbols-outlined text-sm text-[#c8f400]">straighten</span>
-            GRÖSSE WÄHLEN
-            {!selectedSize && <span className="text-[#ff56ed] ml-1">*</span>}
-          </p>
-          <div className="grid grid-cols-2 gap-1.5">
-            {SIZES.map((size) => (
-              <button
-                key={size.id}
-                onClick={() => setSelectedSize(size.id)}
-                className={`relative px-2 py-2 rounded-lg border text-center transition-all duration-200 ${
-                  selectedSize === size.id
-                    ? "border-[#c8f400] bg-[#c8f400]/10 text-[#c8f400]"
-                    : "border-white/[0.08] text-[#8d9ba8] hover:border-white/20 hover:text-[#e8ecef]"
-                }`}
-              >
-                <span className="font-headline font-black text-[10px] uppercase tracking-wider block">{size.label}</span>
-                <span className="font-body text-[9px] text-current opacity-60 block">{size.age}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* QTY + Add to Cart */}
-        <div className="flex items-center gap-3 mt-auto pt-3 border-t border-white/[0.05]">
+        <div className="flex items-center justify-between mt-auto pt-3 border-t border-white/[0.05]">
           <span className="font-headline font-black text-[#c8f400] text-base whitespace-nowrap">
             {product.price}
           </span>
-
-          {/* QTY Stepper */}
-          <div className="flex items-center gap-1 bg-[#0a0b0d] rounded-lg border border-white/[0.08] p-0.5 ml-auto">
-            <button
-              onClick={() => setQty((q) => Math.max(1, q - 1))}
-              className="w-7 h-7 flex items-center justify-center text-[#8d9ba8] hover:text-[#e8ecef] transition-colors rounded-md hover:bg-white/[0.05]"
-              aria-label="Weniger"
-            >
-              <span className="material-symbols-outlined text-base">remove</span>
-            </button>
-            <span className="font-headline font-black text-sm text-[#e8ecef] w-6 text-center">
-              {qty}
-            </span>
-            <button
-              onClick={() => setQty((q) => Math.min(10, q + 1))}
-              className="w-7 h-7 flex items-center justify-center text-[#8d9ba8] hover:text-[#e8ecef] transition-colors rounded-md hover:bg-white/[0.05]"
-              aria-label="Mehr"
-            >
-              <span className="material-symbols-outlined text-base">add</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Add Button */}
-        <button
-          onClick={handleAdd}
-          disabled={!selectedSize}
-          className={`w-full py-3 rounded-xl font-headline font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all duration-300 ${
-            added
-              ? "bg-[#c8f400] text-[#1a2000]"
-              : selectedSize
-              ? "bg-[#c8f400] text-[#1a2000] hover:shadow-[0_0_20px_rgba(200,244,0,0.4)] active:scale-95"
-              : "bg-white/[0.05] text-[#3e4c58] cursor-not-allowed"
-          }`}
-        >
-          <span className="material-symbols-outlined text-base">
-            {added ? "check_circle" : "add_shopping_cart"}
+          <span className="font-headline text-[10px] font-black uppercase tracking-widest text-[#ff56ed] flex items-center gap-1.5">
+            <span className="material-symbols-outlined text-sm">schedule</span>
+            COMING SOON
           </span>
-          {added ? "IN WARENKORB!" : selectedSize ? `IN WARENKORB` : "GRÖSSE WÄHLEN"}
-        </button>
+        </div>
       </div>
     </div>
   );

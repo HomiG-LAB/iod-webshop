@@ -20,7 +20,7 @@ export const heroData = {
   headlineLine1: "Second skin.",
   headlineLine2: "But with a statement.",
   subTagline: "Der Ellbogenschützer, der sich anfühlt wie nichts — und trotzdem alles sagt. Hauchdünn, elastisch, komplett bedruckbar. Für alle, die auf dem Pumptrack ihre eigene Linie fahren.",
-  cta1: "JETZT BESTELLEN",
+  cta1: "BALD VERFÜGBAR",
   cta2: "MEHR ERFAHREN",
   image:
     "/pumptrack_seamless_sleeve_1777204026688.png",
@@ -152,10 +152,10 @@ export const lookbookData = {
 
 // ─── NEWSLETTER ───────────────────────────────────────────────────────────────
 export const newsletterData = {
-  title: "JOIN THE CREW",
-  description: "Exklusiver Zugang zu Drops, Pro-Tipps vom Track und einer Community aus Rebellen.",
+  title: "SEI DABEI WENN'S LOSGEHT.",
+  description: "Wir bauen gerade was Neues. Trag dich ein und erfahre als Erster, wenn die Sleeves droppen — plus exklusive Pre-Launch Deals, die nur die Crew kriegt.",
   placeholder: "deine@rebel-mail.de",
-  buttonText: "REINGEHEN",
+  buttonText: "ICH BIN DABEI",
 };
 
 // ─── USP — Produkt Infos ──────────────────────────────────────────────────────
@@ -363,6 +363,33 @@ export const productsData = [
     badgeType: "secondary",
     image: "/product_victory_lap.png",
     alt: "Velocity Burst Sleeve",
+  },
+  {
+    id: 10,
+    name: "Neon Graffiti",
+    price: "39.00 CHF",
+    badge: "NEW DROP",
+    badgeType: "primary",
+    image: "/product_neon_graffiti.png",
+    alt: "Neon-Grün Graffiti Street Art Edition",
+  },
+  {
+    id: 11,
+    name: "Purple Cyan",
+    price: "39.00 CHF",
+    badge: "HOT",
+    badgeType: "secondary",
+    image: "/product_purple_cyan.png",
+    alt: "Geometrisches Purple Cyan Design",
+  },
+  {
+    id: 12,
+    name: "Urban Flow",
+    price: "39.00 CHF",
+    badge: "TRENDING",
+    badgeType: "primary",
+    image: "/product_urban_flow.png",
+    alt: "Neon-Gelb Urban Street Art Edition",
   },
 ];
 
