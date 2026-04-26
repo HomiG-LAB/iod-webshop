@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function NewsletterForm({ newsletter }: { newsletter: any }) {
   const [email, setEmail] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -20,7 +21,7 @@ export default function NewsletterForm({ newsletter }: { newsletter: any }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, honeypot }),
       });
 
       const data = await res.json();
@@ -32,6 +33,13 @@ export default function NewsletterForm({ newsletter }: { newsletter: any }) {
         setStatus("success");
         setMessage(data.message || "Willkommen in der Crew! Du bist dabei.");
         setEmail("");
+
+        // Google Ads Conversion Tracking
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion', {
+            'send_to': 'AW-CONVERSION_ID/LABEL' // TODO: Replace with actual Google Ads Conversion ID and Label
+          });
+        }
       }
     } catch (err) {
       setStatus("error");
@@ -47,6 +55,17 @@ export default function NewsletterForm({ newsletter }: { newsletter: any }) {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row w-full gap-2">
+          {/* Honeypot field for security against bots */}
+          <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+            <input
+              type="text"
+              name="b_email"
+              tabIndex={-1}
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              autoComplete="off"
+            />
+          </div>
           <input
             id="newsletter-input"
             type="email"

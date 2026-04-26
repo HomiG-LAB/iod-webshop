@@ -74,7 +74,7 @@ export default async function Home() {
   const newsletter = homePage?.newsletter || newsletterData;
 
   const heroImage = homePage?.hero?.backgroundImage ? urlFor(homePage.hero.backgroundImage).url() : heroData.image;
-  const storyImage = homePage?.story?.image ? urlFor(homePage.story.image).url() : "/family_story_1777205766624.png";
+  const storyImage = homePage?.story?.image ? urlFor(homePage.story.image).url() : "/story_testing_team_revised.png";
 
   return (
     <>

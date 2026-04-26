@@ -104,18 +104,18 @@ export default function Shop() {
       price,
       badge,
       badgeType,
-      description
+      description,
+      "imageUrl": image.asset->url
     }`).then((data: any[]) => {
       const merged = data.map(sp => {
-        const match = allProducts.find(p => p.id === sp.id);
         return {
           id: sp.id,
           name: sp.name,
           price: `CHF ${sp.price}.00`,
           badge: sp.badge,
           badgeType: sp.badgeType || "primary",
-          image: match?.image || "/product_monster_track.png",
-          alt: sp.description || match?.alt || "IOD Premium Sleeve"
+          image: sp.imageUrl || "/product_monster_track.png",
+          alt: sp.description || "IOD Premium Sleeve"
         };
       });
       setSanityProducts(merged);

@@ -3,9 +3,19 @@ import { buildWelcomeEmail } from '@/lib/email-templates/welcome';
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, honeypot } = await request.json();
 
-    if (!email || !email.includes('@')) {
+    // Security: Honeypot check to silently drop bot submissions
+    if (honeypot) {
+      return NextResponse.json(
+        { message: 'Erfolgreich eingetragen! Schau in dein Postfach.' },
+        { status: 200 }
+      );
+    }
+
+    // Security: Strict email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
       return NextResponse.json(
         { error: 'Gültige E-Mail Adresse wird benötigt.' },
         { status: 400 }

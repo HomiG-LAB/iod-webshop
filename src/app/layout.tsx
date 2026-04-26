@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Be_Vietnam_Pro } from "next/font/google";
+import { GoogleTagManager } from '@next/third-parties/google';
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -51,6 +52,8 @@ export default function RootLayout({
           <VisualEditing />
         </CartProvider>
         </AuthProvider>
+        {/* Replace GTM-XXXXXXX with your actual Google Tag Manager ID or Google Ads AW-ID */}
+        <GoogleTagManager gtmId="GTM-XXXXXXX" />
       </body>
     </html>
   );
