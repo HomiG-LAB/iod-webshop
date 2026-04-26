@@ -30,7 +30,7 @@ export default function NewsletterForm({ newsletter }: { newsletter: any }) {
         setMessage(data.error || "Ein Fehler ist aufgetreten.");
       } else {
         setStatus("success");
-        setMessage("Willkommen in der Crew! Du bist dabei.");
+        setMessage(data.message || "Willkommen in der Crew! Du bist dabei.");
         setEmail("");
       }
     } catch (err) {
