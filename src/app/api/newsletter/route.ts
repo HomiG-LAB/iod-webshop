@@ -39,12 +39,20 @@ export async function POST(request: Request) {
       }),
     });
 
-    const contactData = await contactResponse.json();
+    // If status is 204 No Content (meaning contact was updated), there is no JSON body
+    let contactData = null;
+    if (contactResponse.status !== 204) {
+      try {
+        contactData = await contactResponse.json();
+      } catch (e) {
+        // ignore parse error if body is empty or invalid
+      }
+    }
 
     if (!contactResponse.ok) {
       console.error('Brevo Contact API Error:', contactData);
       return NextResponse.json(
-        { error: contactData.message || 'Fehler beim Eintragen in den Newsletter.' },
+        { error: contactData?.message || 'Fehler beim Eintragen in den Newsletter.' },
         { status: contactResponse.status }
       );
     }
