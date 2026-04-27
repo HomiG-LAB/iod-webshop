@@ -475,6 +475,13 @@ export const teamData = {
       role: "Chief Mental Health Officer",
       description: "Expertin für Entschleunigung und emotionale Balance. Erinnerte das Team daran, Pausen einzulegen, Prioritäten zu hinterfragen und das Leben nicht zu ernst zu nehmen.",
       image: "/team_mrs_curry.png"
+    },
+    {
+      id: "rookie",
+      name: "Rookie",
+      role: "Praktikant Chief Feel Good Officer",
+      description: "Seine Hauptaufgabe? Die Moral im Team auf 100% halten. Wenn der Flow mal stockt, sorgt er mit unerbittlicher Niedlichkeit und strategischen Kuschelpausen für neue Motivation. Noch in der Ausbildung zum Wachhund, aber bereits ein Meister darin, Herzen (und herumliegende Snacks) zu stehlen.",
+      image: "/team/puppy-styled.png"
     }
   ]
 };
